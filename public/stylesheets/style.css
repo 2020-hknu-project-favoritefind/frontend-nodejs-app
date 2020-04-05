@@ -9,3 +9,32 @@ label.must:after{
     content: "*";
     color: red;
 }
+
+div.like-list {
+    /* 선 스타일 */
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+
+    margin: 2%;
+}
+
+div.like-list > h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+div.like-list > form {
+    text-align: right;
+}
+
+div.like-list > form > button {
+    margin-right: 3px;
+    margin-left: 3px;
+}

@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  <!-- 즐겨찾기 화면 구현-->
-  p 즐겨찾기 목록
+  h1 즐겨찾기
+  .container.like-list
+    h1 장소명
+    div 주소
+    div 분야
+    hr
+    form(action="")
+      button.btn.btn-primary 자세히 보기
+      button.btn.btn-danger 즐겨찾기 해제
