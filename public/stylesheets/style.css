@@ -3,3 +3,9 @@
 .review-header {margin-bottom: 10px; }
 .reviewAuthor {margin: 0 5 px; }
 .reviewTimestamp {color: #ccc; }
+
+/* 반드시 입력해야 하는 form의 label 태그에 must 클래스 */
+label.must:after{
+    content: "*";
+    color: red;
+}
