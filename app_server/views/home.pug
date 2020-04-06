@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  <!-- 두번째 메뉴 -->
+  link(rel="stylesheet", href="/stylesheets/home.css")
+  
   div(style="height: 2em;")
   div.text-center#search
     button.btn.h-100(type="button" onclick="location.href='/place'") 장소추천 
@@ -10,7 +11,6 @@ block content
       i.fas.fa-plus-square
     button.btn.h-100(onclick="location.href='/place/best'") 인기장소 
       i.fas.fa-heart
-    <!-- 검색창 -->
   div.row
     div.col-sm-2
     div.col-sm-8
@@ -21,10 +21,8 @@ block content
             i.fas.fa-search.white
     div.col-sm-2
 
-  
-  
-  <!-- 카테고리 화면 -->
-  br
+  div(style="height: 2rem;")
+
   article.row#hobby-type
     .col-6.col-sm-4.col-md-2
       a(href='/place')
@@ -79,4 +77,5 @@ block content
         img.max-small(src='/images/beauty.PNG')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 패션
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 메이크업
-    
+
+
