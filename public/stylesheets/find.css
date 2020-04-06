@@ -26,12 +26,6 @@ div#question2 {
     text-align: center;
 }
 
-input.btn[type="submit"] {
-    width: 10rem;
-    background-color: #092974;
-    color: white;
-}
-
 label.btn {
     margin: 0.2rem;
 }
