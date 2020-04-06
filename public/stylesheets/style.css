@@ -1,40 +1,68 @@
-.reivew {padding-bottom: 5px; }
-.panel-body.review-container {padding-top: 0;}
-.review-header {margin-bottom: 10px; }
-.reviewAuthor {margin: 0 5 px; }
-.reviewTimestamp {color: #ccc; }
-
-/* 반드시 입력해야 하는 form의 label 태그에 must 클래스 */
-label.must:after{
-    content: "*";
-    color: red;
+/* 기본 */
+body {
+    font-family: "Nanum Gothic", sans-serif !important;
 }
 
-div.like-list {
-    /* 선 스타일 */
-    border-radius: 15px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: gray;
-
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 5%;
-
-    margin: 2%;
+/* 내비게이션 바 */
+nav {
+    background-color: #E7F6FD;
 }
 
-div.like-list > h1 {
-    font-size: 1.3em;
+nav > a.navbar-brand {
+    font-family: "Gugi", cursive;
+    font-size: 1.6rem;
+}
+
+nav li.navbar-text {
+    font-family: "Gugi", cursive;
+    font-size: 1.1rem;
+    color: black !important;
+}
+
+nav a.nav-link {
+    font-family: "Baloo Thambi 2", cursive;
+    font-size: 1.2em;
+    color: navy !important;
+}
+
+/* 메인화면 검색바 부분 */
+div#search {
+    padding: 1rem;
+}
+
+div#search > button {
+    color: black;
     font-weight: bold;
-    margin-bottom: 0px;
+    margin: 0.5rem;
 }
 
-div.like-list > form {
-    text-align: right;
+div#search > button > svg {
+    font-size: 1.2rem;
+    color: navy;
 }
 
-div.like-list > form > button {
-    margin-right: 3px;
-    margin-left: 3px;
+form#search-bar * {
+    height: 3rem !important;
+}
+
+
+/* 분야 목록 */
+article#hobby-type a {
+    text-align: center;
+    color: black;
+}
+
+article#hobby-type a:hover {
+    text-decoration: none;
+}
+
+article#hobby-type img {
+    width: 100%;
+    border-radius: 10%;
+}
+
+/* 푸터 */
+footer {
+    background-color: #E7F6FD;
+    height: 7rem;
 }
