@@ -8,7 +8,7 @@ module.exports.find = function (req, res) {
     res.render('find', { title: '장소 추천' });
 };
 
-/* 장소추천 제대로 시작-OPEN API랑 지도 가져오기 */
+/* 추천 장소 표시 */
 module.exports.map = function (req, res) {
     res.render('map', { title: '당신에게 맞는 취미는?', inout: req.query.inout, hobby_type: req.query["hobby-type"] });
 };
