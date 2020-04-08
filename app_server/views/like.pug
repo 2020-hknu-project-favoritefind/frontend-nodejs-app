@@ -1,5 +1,15 @@
 extends layout
 
 block content
-  <!-- 즐겨찾기 화면 구현-->
-  p 즐겨찾기 목록
+  link(rel="stylesheet", href="/stylesheets/like.css")
+  h1 <i class="fas fa-star"></i> 즐겨찾기
+  .container.like-list
+    div.name CGV안성
+    div 경기도 안성시 석정동 아양2로 109
+    div
+      span.badge.badge-pill.badge-info #실내
+      span.badge.badge-pill.badge-info #교양
+    hr
+    form.favorite-edit(action="")
+      button.btn.btn-primary 자세히 보기
+      button.btn.btn-danger 즐겨찾기 해제

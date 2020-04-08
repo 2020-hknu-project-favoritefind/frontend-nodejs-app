@@ -1,0 +1,61 @@
+/* *********************************** */
+/* 폰트와 관련된 데이터는 여기에 저장합니다. */
+/* *********************************** */
+
+/* 나눔고딕 */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+/* Noto Sans KR */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+/* 배민 도현체 */
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+/* 구기체 */
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+
+/* Baloo Thambi 2 */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap');
+
+/* Comic Neus */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+/* 폰트 설정 관련 클래스 */
+/* 아래 클래스를 적용하면 해당 부분에 폰트가 적용됩니다. */
+/* 아래 클래스는 일시적으로 해당 폰트를 적용해야 할때만 사용합니다. */
+.font-NanumGothic {
+    font-family: "NanumBarunGothic", sans-serif;
+}
+
+.font-NotoSans {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.font-Gugi {
+    font-family: "Gugi", cursive;
+}
+
+.font-DoHyeon {
+    font-family: "Do Hyeon", cursive;
+}
+
+.font-BalooThambi2 {
+    font-family: "Baloo Thambi 2", cursive;
+}
+
+.font-ComicNeus {
+    font-family: "Comic Neus", cursive;
+}
+
+.font-little-big {
+    font-size: 1.2em;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}

@@ -4,12 +4,11 @@ var ctrlHobby = require('../controllers/hobby');
 var ctrlUser = require('../controllers/user');
 
 /* GET Hobby page. */
-router.get('/', ctrlHobby.homelist); //시작화면
-router.get('/place', ctrlHobby.findplace); //장소 추천 첫화면
-router.get('/place/inout', ctrlHobby.inout); //실내,실외 장소 선택
-router.get('/place/inout/kind', ctrlHobby.kind) //취미 분야 선택 >> 장소 추천 진행!
-router.get('/place/add', ctrlHobby.addplace); //장소 추가
-router.get('/place/best', ctrlHobby.bestplace); //인기 장소
+router.get('/', ctrlHobby.home); //시작화면
+router.get('/find', ctrlHobby.find); //장소 추천 첫화면
+router.get('/map', ctrlHobby.map)
+router.get('/place/add', ctrlHobby.add); //장소 추가
+router.get('/place/best', ctrlHobby.best); //인기 장소
 
 /* GET User pages */
 router.get('/login', ctrlUser.login); //로그인

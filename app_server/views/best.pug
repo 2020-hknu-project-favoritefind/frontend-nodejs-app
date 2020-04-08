@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  <!-- 인기 있는 장소 화면 구현-->
-  p 메인 메뉴가 2개라 함 넣어봤는데 하기 복잡하고 귀찮으면 걍 아예 없애기
+  h1 인기가 많은 장소입니다.
+  link(rel="stylesheet", href="/stylesheets/best.css")
+  -for(var i=0;i<20;i++) 
+    .container.best-list
+      div.name CGV안성
+      div 경기도 안성시 석정동 아양2로 109
+      div
+        span.badge.badge-pill.badge-info #실내
+        span.badge.badge-pill.badge-info #교양
+      hr
+      form.favorite-edit(action="")
+        button.btn.btn-primary 자세히 보기
+        button.btn.btn-success 즐겨찾기 설정

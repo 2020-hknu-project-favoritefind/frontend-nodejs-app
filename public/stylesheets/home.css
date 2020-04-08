@@ -1,0 +1,35 @@
+/* 메인화면 검색바 부분 */
+div#search {
+    padding: 1rem;
+}
+
+div#search > button {
+    color: black;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+div#search > button > svg {
+    font-size: 1.2rem;
+    color: navy;
+}
+
+form#search-bar * {
+    height: 3rem !important;
+}
+
+
+/* 분야 목록 */
+article#hobby-type a {
+    text-align: center;
+    color: black;
+}
+
+article#hobby-type a:hover {
+    text-decoration: none;
+}
+
+article#hobby-type img {
+    width: 100%;
+    border-radius: 10%;
+}
