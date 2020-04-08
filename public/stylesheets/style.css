@@ -1,5 +1,11 @@
-.reivew {padding-bottom: 5px; }
-.panel-body.review-container {padding-top: 0;}
-.review-header {margin-bottom: 10px; }
-.reviewAuthor {margin: 0 5 px; }
-.reviewTimestamp {color: #ccc; }
+/* 기타 여러 페이지에서 통용되는 디자인 양식 */
+form .must::after {
+    content: "*";
+    color: red;
+}
+
+.btn[type="submit"] {
+    width: 10rem;
+    background-color: #092974;
+    color: white;
+}

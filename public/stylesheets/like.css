@@ -1,0 +1,27 @@
+h1 {
+    font-size: 1.6rem;
+}
+
+div.like-list {
+    border: 1px gray solid;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.name {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.favorite-edit {
+    text-align: right;
+}
+
+button {
+    margin: 0.2rem;
+}
+
+span.badge {
+    margin: 0.1rem;
+}
