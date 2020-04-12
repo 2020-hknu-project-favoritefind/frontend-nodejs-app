@@ -10,19 +10,19 @@ nav {
 
 nav > a.navbar-brand {
     font-family: "Gugi", cursive;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 nav li.navbar-text {
     font-family: "Gugi", cursive;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: black !important;
 }
 
 nav a.nav-link {
     font-family: "Baloo Thambi 2", cursive;
-    font-size: 1.2em;
-    color: navy !important;
+    font-size: 1.3em;
+    color: #344073 !important;
 }
 
 /* 푸터 */

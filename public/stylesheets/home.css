@@ -6,12 +6,13 @@ div#search {
 div#search > button {
     color: black;
     font-weight: bold;
-    margin: 0.5rem;
+    font-size: 1.1rem;
+    margin: 0.7rem;
 }
 
 div#search > button > svg {
-    font-size: 1.2rem;
-    color: navy;
+    font-size: 1.3rem;
+    color:#344073;
 }
 
 form#search-bar * {

@@ -3,6 +3,16 @@ module.exports.home = function (req, res) {
     res.render('home', { title: '페이보릿' });
 };
 
+/* 카테고리 */
+module.exports.place = function (req, res)
+{
+    res.render('place', { title: '분야' })
+}
+/* 취미분석 */
+module.exports.test = function (req, res) {
+    res.render('test', { title: '취미 분석' });
+};
+
 /* 장소추천 첫화면-실내 실외 물어보기*/
 module.exports.find = function (req, res) {
     res.render('find', { title: '장소 추천' });

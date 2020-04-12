@@ -1,12 +1,14 @@
 extends layout
 
 block content
+  br
   .row
     <!--회원가입 폼-->
     .col-lg-3
     .col-lg-6
       .login-box.well
         h2(style="font-family: 'Comic Neue', cursive;") join us　
+        br
         <!-- 이름/아이디/비밀번호-->
         form(accept-charset="UTF-8" role="form" action="/")
           .form-group
@@ -20,5 +22,5 @@ block content
             input.form-control(name="password" id="password" value='' type="text" style="color: navy;")
           hr 
           .from-group
-            input.btn.btn-defalut.btn-login-submit.btn-block.m-t-md(type="submit" value="JOIN" style="background-color: #092974; color:white; font-family: 'Baloo Thambi 2', cursive; font-size: 20px;")
+            input.btn.btn-defalut.btn-login-submit.btn-block.m-t-md(type="submit" value="JOIN" style="background-color: #344073; color:white; font-family: 'Baloo Thambi 2', cursive; font-size: 20px;")
     .col-lg-3

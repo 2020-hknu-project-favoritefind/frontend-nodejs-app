@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  h1 인기가 많은 장소입니다.
   link(rel="stylesheet", href="/stylesheets/best.css")
+  br
+  h1 가장 인기있는 장소 20곳?
   -for(var i=0;i<20;i++) 
     .container.best-list
       div.name CGV안성

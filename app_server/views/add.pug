@@ -2,8 +2,7 @@ extends layout
 
 block content
   link(rel="stylesheet", href="/stylesheets/add.css")
-  
-  h1 장소를 추가합니다
+  h1 추가하고 싶은 장소가 있나요?
   form(method="post" accept-charset="UTF-8")
     .form-group
       label.must(for="hobby_type") 분류
@@ -42,4 +41,4 @@ block content
     hr
 
     .form-group(style="text-align: right;")
-      button.btn(type="submit") 완료
+      button.btn(type="submit" style="background-color: #344073;") 완료
