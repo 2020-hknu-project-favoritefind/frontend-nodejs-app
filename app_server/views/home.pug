@@ -27,58 +27,57 @@ block content
 
   article.row#hobby-type
     .col-6.col-sm-4.col-md-2
-      a(href='/place')
+      button(id="book")
         img.max-small(src='/images/movie.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 교양
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 영화관 전시관
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
-        img.max-small(src='/images/sport.PNG' id='place' value='jam')
+      button(id="jam")
+        img.max-small(src='/images/sport.PNG')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 레포츠
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 스포츠 등산로 산책로
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="art")
         img.max-small(src='/images/art.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 미술
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 만화 소묘
 
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="flower")
         img.max-small(src='/images/diy.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 공예
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 꽃기예 꽃꽂이 종이접기
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="study")
         img.max-small(src='/images/language.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 어학
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 영어학원 논술학원
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="dance")
         img.max-small(src='/images/dance.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 춤
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 댄스 무용 연극
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="cook")
         img.max-small(src='/images/cook.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 요리
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 바리스타 소믈리에
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="music")
         img.max-small(src='/images/music.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 음악
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 드럼 피아노 노래방
     
     .col-6.col-sm-4.col-md-2
-      a(href='/place' style="color:black;")
+      button(id="fashion")
         img.max-small(src='/images/beauty.PNG' id='place')
         h3(style="font-family: 'Noto Sans KR', sans-serif;") 패션
         p(style="font-family: 'Nanum Gothic', sans-serif; font-size:10pt; font-color:gray;") 메이크업
 
-
-  <script src="place_jam.js"> </script>
+  ul.list-group(id='output')

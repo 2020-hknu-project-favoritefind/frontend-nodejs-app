@@ -3,7 +3,8 @@ extends layout
 block content
   link(rel="stylesheet", href="/stylesheets/map.css")
   <!-- 실내외 / 분야 다 선택한 뒤 나올 화면-->
-  h1 당신에게 추천하는 장소입니다
+  br
+  h2 당신에게 추천하는 장소입니다
   span.badge.badge-pill.badge-info ##{inout}
   each i in hobby_type
     span.badge.badge-pill.badge-info ##{i}

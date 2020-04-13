@@ -34,3 +34,8 @@ article#hobby-type img {
     width: 100%;
     border-radius: 10%;
 }
+
+article#hobby-type button{
+    background-color:transparent;  
+    border:0px transparent solid;
+}
