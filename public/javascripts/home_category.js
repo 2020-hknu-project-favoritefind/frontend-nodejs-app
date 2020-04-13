@@ -11,7 +11,7 @@ $(function(){
     $('#fashion').click({param:"fashion"}, kind);
 })
 
-/* 실제 OPEN API 출력 */
+/* 실제 OPEN API 출력! */
 function kind(event)
 {
     /* 레포츠 */
