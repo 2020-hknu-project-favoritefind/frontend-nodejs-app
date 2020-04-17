@@ -2,12 +2,13 @@ extends layout
 
 block content
   link(rel="stylesheet", href="/stylesheets/map.css")
+  link(rel="stylesheet", href="/stylesheets/test.css")
+  script(src="/javascripts/category.js")
   <!-- 실내외 / 분야 다 선택한 뒤 나올 화면-->
   br
-  h2 당신에게 추천하는 장소입니다
-  span.badge.badge-pill.badge-info ##{inout}
-  each i in hobby_type
-    span.badge.badge-pill.badge-info ##{i}
-    
+  h1 당신에게 추천하는 장소는?
+  span.badge.badge-pill.badge-info #{hobby_type}
 
-  div#map(style="height: 600px; background-color: green;") 여기에 지도가 들어감
+  div#map(style="height: 300px; background-color: orange;") 여기에 지도가 들어감
+  br
+  ul.list-group(id='output')
