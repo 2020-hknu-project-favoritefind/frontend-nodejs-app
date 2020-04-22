@@ -23,29 +23,42 @@ $(document).ready(function()
         A[i]=getParam('answer'+i);
         AnswerStr += ("A"+(i+1)+"="+A[i]+" ");
     }
-    alert(AnswerStr)
+    //alert('"'+AnswerStr+'"');
 
     /* 결과 요청 */
     var answerjs = {
-        "apikey":"68b58f114640274a7d06e220f62feac1",
+            "apikey":"68b58f114640274a7d06e220f62feac1",
             "qestrnSeq" : "18",
-            "trgetSe": "100208",
+            "trgetSe": "100207",
             "gender": "100323",
             "grade": "3",
             "startDtm": timestamp,
-            "answers": AnswerStr
+            "answers": '"'+AnswerStr+'"'
     };
 
     $.ajax({
-        url:"inspct.career.go.kr/openapi/test/report?apikey=68b58f114640274a7d06e220f62feac1&q=18",
+        url:"http://inspct.career.go.kr/openapi/test/report?apikey=68b58f114640274a7d06e220f62feac1&q=18",
+        contentType: "application/json",
         type:"POST",
         data:JSON.stringify(answerjs),
         contentType: "application/json",
         success: function(data)
         {
-            alert(data);
+            console.log(data);
+            var text = data;
+            var list = text.RESULT;
+            var contentStr = "";
+
+            contentStr += '<li class="list-group-item"> 검사결과) ' +list.url+'</li>'; 
+            contentStr += '<li class="list-group-item"><a href="'+list.url+'"> 여기를 눌러서 당신의 홀랜드 유형을 확인해보세요!</a></li>';
+            $("#testEnd").html(contentStr);
         }
         
     })
+
+    /* 유형에 따라 나타나게 하기 */
+    var img = "";
+    img += '<li> <img src="/images/artistic.png" style="height: 21em; width: 34em;") </li>'
+    $("#YourType").html(img);
 })
 
