@@ -26,27 +26,28 @@ block content
   br
   br
   h1 어떤 취미가 잘 맞을까요?
+  p 　직업흥미유형별 결과(T점수)에서 가장 높은 점수가 나온 유형을 확인해주세요!
   br
-  div.jumbotron
-    .container
-      ul.list-group(id='testEnd')
+  .container
+    ul.list-group(id='testEnd')
   <!--검사 inspct.career.go.kr/openapi/test/questions?apikey=인증키&q=심리검사변수 >
   <!--결과 inspct.career.go.kr/openapi/test/report?apikey=인증키&qestrnSeq=심리검사변수>
   <!--결과 타입에 따라 다르게 사용자에게 이미지 보여주고 싶음 (images 폴더에 만들어놓음)-->
-  hr
   br
-  h1 당신의 홀랜드 유형에 맞는 활동은?
+  br
+  h1(style="margin-top: 3rem;") 당신의 홀랜드 유형에 맞는 활동은?
   .container
-    p 확인한 홀랜드 유형을 클릭해주세요...
+    p 확인한 홀랜드 유형을 클릭해주세요!
     form(accept-charset="UTF-8")
     .form-group
       label 유형
       select.form-control(name="TestType" id="TestType")
-        option(value="artistic") 예술형
         option(value="convention") 관습형
         option(value="enterprise") 기업형
-        option(value="invest") 탐구형
-        option(value="real") 실재형
         option(value="social") 사회형
+        option(value="real") 실재형
+        option(value="artistic") 예술형
+        option(value="invest") 탐구형
+  
 
     ul.list-group(id='YourType' style="list-style: none;")

@@ -48,7 +48,7 @@ $(document).ready(function()
             var text = data;
             var list = text.RESULT;
             var contentStr = "";
-
+            
             contentStr += '<li class="list-group-item"> 검사결과) ' +list.url+'</li>'; 
             contentStr += '<li class="list-group-item"><a href="'+list.url+'"> 여기를 눌러서 당신의 홀랜드 유형을 확인해보세요!</a></li>';
             $("#testEnd").html(contentStr);
@@ -58,7 +58,43 @@ $(document).ready(function()
 
     /* 유형에 따라 나타나게 하기 */
     var img = "";
-    img += '<li> <img src="/images/artistic.png" style="height: 21em; width: 34em;") </li>'
+    img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>';
     $("#YourType").html(img);
+    
+    $('select[name=TestType]').change(function()
+    {
+        if($(this).val() == "artistic")
+        {
+            img = '<li> <img src="/images/artistic.png" style="height: 18em; width: 32em") </li>';
+            $("#YourType").html(img);
+        }
+        if($(this).val() == "convention")
+        {
+            img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>';
+            $("#YourType").html(img);
+        }
+        if($(this).val() == "enterprise")
+        {
+            img = '<li> <img src="/images/enterprise.png" style="height: 18em; width: 32em;") </li>';
+            $("#YourType").html(img);
+        }
+        if($(this).val() == "invest")
+        {
+            img = '<li> <img src="/images/invest.png" style="height: 18em; width: 32em;") </li>';
+            $("#YourType").html(img);
+        }
+        if($(this).val() == "real")
+        {
+            img = '<li> <img src="/images/real.png" style="height: 18em; width: 32em;") </li>';
+            $("#YourType").html(img);
+        }
+         if($(this).val() == "social")
+        {
+            img = '<li> <img src="/images/social.png" style="height: 18em; width: 32em;") </li>';
+            $("#YourType").html(img);
+        }
+
+    }
+    )
 })
 
