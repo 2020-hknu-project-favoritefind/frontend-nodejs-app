@@ -9,7 +9,7 @@ function get_query(){
     return result;
 }
 var result = get_query();
-
+var subject = ""
 /* 실제 OPEN API 출력! */
 $(document).ready(function()
 {
@@ -339,3 +339,33 @@ $(document).ready(function()
     }
 
 })
+
+var sort = 1;
+
+function sorting_name()
+{
+    alert("가나다 순 정렬");
+    
+	var obj = $("#output");
+	var list = obj.find('li');
+	list.sort(function (left, right) {
+		if (sort == "1") {
+			return $(left).text().toUpperCase().localeCompare($(right).text().toUpperCase());
+		} else {
+			return $(right).text().toUpperCase().localeCompare($(left).text().toUpperCase());
+		}
+	}).each(function () {
+		obj.append(this);
+	});
+	sort = (sort == 1) ? 2 : 1;
+}
+
+function sorting_dis()
+{
+    alert("거리 순 정렬");
+}
+
+function sorting_like()
+{
+    alert("인기 순 정렬");
+}

@@ -4,21 +4,23 @@ block content
   link(rel="stylesheet", href="/stylesheets/map.css")
   link(rel="stylesheet", href="/stylesheets/home.css")
   link(rel="stylesheet", href="/stylesheets/test.css")
-  script(src="/javascripts/category.js")
   script(src="/javascripts/kakaomap.js")
-  script(type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=47ceaa3541a8f886429e8aa38fc4abe9")
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDisIjvcok9Z6WtoPPNA7PLzXoRf7B4rw"
+  async defer)
   <!-- 실내외 / 분야 다 선택한 뒤 나올 화면-->
   br
   div(style="height: 2em;")
   div.text-center#search
-    button.btn.h-100(onclick="location.href='/map?alphabet'" type="button") 가나다 순
+    button.btn.h-100(id=search type="button" onclick="sorting_name()") 가나다 순
       i.fas.fa-sort-alpha-down
-    button.btn.h-100(onclick="location.href='/map?distance'") 거리 순
+    button.btn.h-100(type="button" onclick="sorting_dis()") 거리 순
       i.fas.fa-map-marked-alt
-    button.btn.h-100(onclick="location.href='/map?likenum'") 인기 순 
+    button.btn.h-100(type="button" onclick="sorting_like()") 인기 순 
       i.fas.fa-thumbs-up
   h1 당신에게 추천하는 장소는?
   
-  div(id=map style="width:100%;height:350px;")
+  div#map(style="width:100%;height:350px;")
   br
   ul.list-group(id='output')
+
+  script(src="/javascripts/category.js")

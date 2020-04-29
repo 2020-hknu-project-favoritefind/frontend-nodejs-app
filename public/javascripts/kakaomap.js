@@ -1,9 +1,58 @@
-//&libraries=services,clusterer,drawing 라이브러리 쓸거면!
+window.onload = getMyLocation;
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+var map;
+
+function getMyLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(displayLocation);
+    } else {
+        alert("Oops, no geolocation support");
+    }
+}
+
+function displayLocation(position)
+{
+    showMap(position.coords);
+}
+
+function showMap(coords)
+{
+    var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+    var mapOptions = {
+        zoom: 10,
+        center: googleLatAndLong,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var mapDiv = document.getElementById("map");
+    map = new google.maps.Map(mapDiv, mapOptions);
+
+    var title="취미 장소";
+    var content="위도: "+coords.latitude+" 경도: "+coords.longitude+" ";
+    addMarker(map, googleLatAndLong, title, content);
+}
+
+function addMarker(map, latlong, title, content)
+{
+    var markerOptions = 
+    {
+        position: latlong,
+        map: map,
+        title: title,
+        clickable: true
+    };
+    
+    var marker = new google.maps.Marker(markerOptions);
+
+    var infoWindowOptions = 
+    {
+        content: content,
+        position: latlong
     };
 
-var map = new kakao.maps.Map(mapContainer, mapOption);
+    var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+
+    google.maps.event.addListener(marker, "click", function()
+    {
+        infoWindow.open(map);
+    });
+}
