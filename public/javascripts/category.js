@@ -16,6 +16,8 @@ $(document).ready(function()
     /* 교양 */
     if (result.hobby_type == "교양")
     {
+        $("#subcategory").html("button.btn.h-100(id=search type='button') 공연장");
+
         $.ajax({//공연장
             type: "GET",
             url: "https://openapi.gg.go.kr/PerformPlace?KEY=f6cc1704c2f24255b5cf45d4949f1f84&Type=json&pIndex=1&pSize=50",
@@ -24,6 +26,23 @@ $(document).ready(function()
                 var list = text.PerformPlace[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].BIZPLC_NM == null)
+                    {
+                        list[i].BIZPLC_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].LOCPLC_FACLT_TELNO == null)
+                    {
+                        list[i].LOCPLC_FACLT_TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].LOCPLC_FACLT_TELNO+"</li>";
@@ -39,6 +58,23 @@ $(document).ready(function()
                 var list = text.MovieTheater[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].BIZPLC_NM == null)
+                    {
+                        list[i].BIZPLC_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].LOCPLC_FACLT_TELNO == null)
+                    {
+                        list[i].LOCPLC_FACLT_TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].LOCPLC_FACLT_TELNO+"</li>";
@@ -59,6 +95,19 @@ $(document).ready(function()
                 var list = text.PubPhysTrainFaciltyShootRange[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     contentStr += '<li class="list-group-item">[이름]'+list[i].FACLT_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+'</li>';
@@ -74,6 +123,19 @@ $(document).ready(function()
                 var list = text.PublicSwimmingPool[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                         contentStr += '<li class="list-group-item">[이름]'+list[i].FACLT_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"</li>";
@@ -89,6 +151,19 @@ $(document).ready(function()
                 var list = text.PublicLivelihood[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_SIGUN_NM == null)
+                    {
+                        list[i].REFINE_SIGUN_NM = "지역 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                         contentStr += '<li class="list-group-item">[이름]'+list[i].FACLT_NM+"<br></br>[지역]"+list[i].SIGUN_NM+"</li>";
@@ -104,6 +179,23 @@ $(document).ready(function()
                 var list = text.PhysicalTraining[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].BIZPLC_NM == null)
+                    {
+                        list[i].BIZPLC_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].LOCPLC_FACLT_TELNO == null)
+                    {
+                        list[i].LOCPLC_FACLT_TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                         contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].LOCPLC_FACLT_TELNO+"</li>";
@@ -119,6 +211,23 @@ $(document).ready(function()
                 var list = text.FISHPLCINFO[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_DIV_NM == null)
+                    {
+                        list[i].FACLT_DIV_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].MANAGE_INST_TELNO == null)
+                    {
+                        list[i].MANAGE_INST_TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                         contentStr += '<li class="list-group-item">[장소]'+list[i].FACLT_DIV_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].MANAGE_INST_TELNO+"</li>";
@@ -134,6 +243,23 @@ $(document).ready(function()
                 var list = text.PublicHorseridingCenter[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].SIGUN_NM == null)
+                    {
+                        list[i].SIGUN_NM = "지역 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].CONTCT_NO == null)
+                    {
+                        list[i].CONTCT_NO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                         contentStr += '<li class="list-group-item">[이름]'+list[i].FACLT_NM+"<br></br>[지역]"+list[i].SIGUN_NM+"<br></br>[연락처]"+list[i].CONTCT_NO+"</li>";
@@ -154,6 +280,23 @@ $(document).ready(function()
                 var list = text.Tbinstutm[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].TELNO == null)
+                    {
+                        list[i].TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     if(list[i].CRSE_CLASS_NM == "미술")
@@ -177,6 +320,23 @@ $(document).ready(function()
                 var list = text.Tbinstutm[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].TELNO == null)
+                    {
+                        list[i].TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     if(list[i].CRSE_CLASS_NM == "DIY가구제작(중급)" || list[i].CRSE_CLASS_NM == "DIY가구제작(초급)" || list[i].CRSE_CLASS_NM == "DIY목공" || list[i].CRSE_CLASS_NM == "로봇" || list[i].CRSE_CLASS_NM == "섬유공예머신퀼트" || list[i].CRSE_CLASS_NM == "꽃꽂이")
@@ -200,6 +360,23 @@ $(document).ready(function()
                  var list = text.Tbinstutm[1].row;
                  var contentStr = "";
                  
+                 //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].TELNO == null)
+                    {
+                        list[i].TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                  for(var i=0; i<list.length; i++)
                  {
                      if(list[i].CRSE_CLASS_NM == "실용외국어(유아/초·중·고)")
@@ -224,6 +401,23 @@ $(document).ready(function()
                 var list = text.DanceAcademy[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].BIZPLC_NM == null)
+                    {
+                        list[i].BIZPLC_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].LOCPLC_FACLT_TELNO == null)
+                    {
+                        list[i].LOCPLC_FACLT_TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                         contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].LOCPLC_FACLT_TELNO+"</li>";
@@ -240,6 +434,23 @@ $(document).ready(function()
                     var list = text.Tbinstutm[1].row;
                     var contentStr = "";
                     
+                    //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].TELNO == null)
+                    {
+                        list[i].TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                     for(var i=0; i<list.length; i++)
                     {
                         if(list[i].CRSE_CLASS_NM == "연극" || list[i].CRSE_CLASS_NM == "무용")
@@ -264,6 +475,23 @@ $(document).ready(function()
                  var list = text.Tbinstutm[1].row;
                  var contentStr = "";
                  
+                 //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].TELNO == null)
+                    {
+                        list[i].TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                  for(var i=0; i<list.length; i++)
                  {
                      if(list[i].CRSE_CLASS_NM == "식음료품(바리스타,소믈리에)" || list[i].CRSE_CLASS_NM == "식음료품")
@@ -287,6 +515,23 @@ $(document).ready(function()
                 var list = text.Tbinstutm[1].row;
                 var contentStr = "";
                 
+                //null인 값 없다고 넣어주기
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].FACLT_NM == null)
+                    {
+                        list[i].FACLT_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].TELNO == null)
+                    {
+                        list[i].TELNO = "연락처 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     if(list[i].CRSE_CLASS_NM == "음악")
@@ -305,6 +550,18 @@ $(document).ready(function()
                 var list = text.sngrumIndutype[1].row;
                 var contentStr = "";
                 
+                for(var i=0; i<list.length; i++)
+                {
+                    if (list[i].BIZPLC_NM == null)
+                    {
+                        list[i].BIZPLC_NM = "시설명 정보가 존재하지 않습니다.";
+                    }
+                    if (list[i].REFINE_ROADNM_ADDR == null)
+                    {
+                        list[i].REFINE_ROADNM_ADDR = "주소 정보가 존재하지 않습니다.";
+                    }
+                }
+
                 for(var i=0; i<list.length; i++)
                 {
                     contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"</li>";
