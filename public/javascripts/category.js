@@ -16,8 +16,6 @@ $(document).ready(function()
     /* 교양 */
     if (result.hobby_type == "교양")
     {
-        $("#subcategory").html("button.btn.h-100(id=search type='button') 공연장");
-
         $.ajax({//공연장
             type: "GET",
             url: "https://openapi.gg.go.kr/PerformPlace?KEY=f6cc1704c2f24255b5cf45d4949f1f84&Type=json&pIndex=1&pSize=50",
