@@ -1,6 +1,8 @@
-/* 심리검사 OPEN API 출력! */
 $(document).ready(function()
 {
+    /* 심리검사 OPEN API 출력함수 */
+    function gettingTest()
+    {
     $.ajax({
         type: "GET",
         url: "http://inspct.career.go.kr/openapi/test/questions?apikey=68b58f114640274a7d06e220f62feac1&q=18",
@@ -9,8 +11,6 @@ $(document).ready(function()
             var text = data;
             var list = text.RESULT;
             var contentStr = "";
-            var A = new Array(); //score
-            var Str=""; //임의로 배열 출력 잘되나 확인
 
             /* 출력 */
             for(var i=0; i<list.length; i++)
@@ -65,4 +65,7 @@ $(document).ready(function()
             $("#testStart").html(contentStr);
         }
     })
+    
+    }
+    gettingTest();
 })

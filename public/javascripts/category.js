@@ -9,10 +9,13 @@ function get_query(){
     return result;
 }
 var result = get_query();
-var subject = ""
+
 /* 실제 OPEN API 출력! */
 $(document).ready(function()
 {
+    function placeRecommend()
+
+    {
     /* 교양 */
     if (result.hobby_type == "교양")
     {
@@ -592,15 +595,15 @@ $(document).ready(function()
             }
         })
     }
-
+    }
+    placeRecommend();
 })
 
 var sort = 1;
 
+/* 가나다 순으로 목록 정렬 */
 function sorting_name()
 {
-    alert("가나다 순 정렬");
-    
 	var obj = $("#output");
 	var list = obj.find('li');
 	list.sort(function (left, right) {
@@ -612,7 +615,7 @@ function sorting_name()
 	}).each(function () {
 		obj.append(this);
 	});
-	sort = (sort == 1) ? 2 : 1;
+	sort = (sort == 1) ? 2 : 1; //순서대로 정렬
 }
 
 function sorting_dis()

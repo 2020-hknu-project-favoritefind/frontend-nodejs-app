@@ -23,9 +23,10 @@ $(document).ready(function()
         A[i]=getParam('answer'+i);
         AnswerStr += ("A"+(i+1)+"="+A[i]+" ");
     }
-    //alert('"'+AnswerStr+'"');
 
-    /* 결과 요청 */
+    /* 결과 요청하는 함수 */
+    function testScore()
+    {
     var answerjs = {
             "apikey":"68b58f114640274a7d06e220f62feac1",
             "qestrnSeq" : "18",
@@ -55,8 +56,11 @@ $(document).ready(function()
         }
         
     })
+    }
 
-    /* 유형에 따라 나타나게 하기 */
+    /* 유형에 따라 나타나게 하는 함수 */
+    function yourHobby()
+    {
     var img = "";
     img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>';
     $("#YourType").html(img);
@@ -94,7 +98,9 @@ $(document).ready(function()
             $("#YourType").html(img);
         }
 
+    })
     }
-    )
+    testScore();
+    yourHobby();
 })
 
