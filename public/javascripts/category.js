@@ -10,11 +10,37 @@ function get_query(){
 }
 var result = get_query();
 
+var user_latitude = 0; //사용자 위도
+var user_longitude = 0; //사용자 경도
+var placename = []; //시설명
+var address = []; //주소
+var phone = []; //전화번호
+var latitude = []; // 장소 위도
+var longitude = []; //장소 경도
+var x = []; // 거리순 정렬 - x
+var y = []; // 거리순 정렬 - y
+var distance = []; // 거리순 정렬 - 위도 경도 거리
+var all = []; // 총 집합
+
 /* 실제 OPEN API 출력! */
 $(document).ready(function()
 {
-    function placeRecommend()
+    
+    function getMyLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(displayLatitude);
+        } else {
+            alert("Oops, no geolocation support");
+        }
+    }
+    
+    function displayLatitude(position)
+    {
+        window.user_latitude = position.coords.latitude;
+        window.user_longitude = position.coords.longitude;
+    }
 
+    function placeRecommend()
     {
     /* 교양 */
     if (result.hobby_type == "교양")
@@ -49,6 +75,21 @@ $(document).ready(function()
                     contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].LOCPLC_FACLT_TELNO+"</li>";
                 } 
                 $("#output").html(contentStr);
+
+                
+                //거리순 정렬
+                for(var i=0; i<list.length; i++)
+                {
+                    window.placename[i] = list[i].BIZPLC_NM;
+                    window.address[i] = list[i].REFINE_ROADNM_ADDR;
+                    window.phone[i] = list[i].LOCPLC_FACLT_TELNO;
+                    window.latitude[i] = (list[i].REFINE_WGS84_LAT);
+                    window.longitude[i] = (list[i].REFINE_WGS84_LOGT);
+                    window.x[i] = (Math.cos(latitude[i] * 6400 * 2 * 3.14 / 360) * Math.abs(longitude[i]-user_longitude));
+                    window.y[i] = 111 * Math.abs(latitude[i] - user_latitude);
+                    window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) );
+                    window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i]];
+                }
             }
         })
         $.ajax({//영화관
@@ -58,7 +99,7 @@ $(document).ready(function()
                 var text = JSON.parse(data);
                 var list = text.MovieTheater[1].row;
                 var contentStr = "";
-                
+
                 //null인 값 없다고 넣어주기
                 for(var i=0; i<list.length; i++)
                 {
@@ -81,6 +122,20 @@ $(document).ready(function()
                     contentStr += '<li class="list-group-item">[이름]'+list[i].BIZPLC_NM+"<br></br>[주소]"+list[i].REFINE_ROADNM_ADDR+"<br></br>[연락처]"+list[i].LOCPLC_FACLT_TELNO+"</li>";
                 } 
                 $("#output").append(contentStr);
+
+                //거리순 정렬
+                for(var i=0; i<list.length; i++)
+                {
+                    window.placename[i] = list[i].BIZPLC_NM;
+                    window.address[i] = list[i].REFINE_ROADNM_ADDR;
+                    window.phone[i] = list[i].LOCPLC_FACLT_TELNO;
+                    window.latitude[i] = (list[i].REFINE_WGS84_LAT);
+                    window.longitude[i] = (list[i].REFINE_WGS84_LOGT);
+                    window.x[i] = (Math.cos(latitude[i] * 6400 * 2 * 3.14 / 360) * Math.abs(longitude[i]-user_longitude));
+                    window.y[i] = 111 * Math.abs(latitude[i] - user_latitude);
+                    window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) );
+                    window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i]];
+                }
             }
         })
     }
@@ -597,6 +652,7 @@ $(document).ready(function()
     }
     }
     placeRecommend();
+    getMyLocation();
 })
 
 var sort = 1;
@@ -620,7 +676,21 @@ function sorting_name()
 
 function sorting_dis()
 {
-    alert("거리 순 정렬");
+    console.log(user_latitude);
+    console.log(user_longitude);
+    all.sort(function(left, right)
+    {
+        return left[5]-right[5];
+    })
+    console.log(all);
+
+    contentStr = '<li class="list-group-item">[이름]'+all[0][0] + "<br></br>[주소]"+all[0][1]+"<br></br>[연락처]"+all[0][2]+"</li>";
+    for(var i=1; i<all.length; i++)
+    {
+        contentStr += '<li class="list-group-item">[이름]'+all[i][0]+"<br></br>[주소]"+all[i][1]+"<br></br>[연락처]"+all[i][2]+"</li>";
+    } 
+    $("#output").html(contentStr);
+
 }
 
 function sorting_like()

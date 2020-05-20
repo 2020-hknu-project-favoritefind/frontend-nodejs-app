@@ -1,6 +1,8 @@
 window.onload = getMyLocation;
 
 var map;
+var user_latitude;
+var user_logitude;
 
 function getMyLocation() {
     if (navigator.geolocation) {
