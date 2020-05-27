@@ -50,7 +50,7 @@ $(document).ready(function()
             var list = text.RESULT;
             var contentStr = "";
             
-            contentStr += '<li class="list-group-item"> 검사결과) ' +list.url+'</li>'; 
+            //contentStr += '<li class="list-group-item"> 검사결과) ' +list.url+'</li>'; 
             contentStr += '<li class="list-group-item"><a href="'+list.url+'"> 여기를 눌러서 당신의 홀랜드 유형을 확인해보세요!</a></li>';
             $("#testEnd").html(contentStr);
         }
@@ -62,7 +62,8 @@ $(document).ready(function()
     function yourHobby()
     {
     var img = "";
-    img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>';
+    img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>'; //사진
+    img += '<div class="wrapper"><a href="/map?hobby_type=공예" class="btn10"><span>관습형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
     $("#YourType").html(img);
     
     $('select[name=TestType]').change(function()
@@ -70,31 +71,37 @@ $(document).ready(function()
         if($(this).val() == "artistic")
         {
             img = '<li> <img src="/images/artistic.png" style="height: 18em; width: 32em") </li>';
+            img += '<div class="wrapper"><a href="map?hobby_type=미술" class="btn10"><span>예술형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
             $("#YourType").html(img);
         }
         if($(this).val() == "convention")
         {
             img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>';
+            img += '<div class="wrapper"><a href="/map?hobby_type=공예" class="btn10"><span>관습형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
             $("#YourType").html(img);
         }
         if($(this).val() == "enterprise")
         {
             img = '<li> <img src="/images/enterprise.png" style="height: 18em; width: 32em;") </li>';
+            img += '<div class="wrapper"><a href="/map?hobby_type=어학" class="btn10"><span>기업형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
             $("#YourType").html(img);
         }
         if($(this).val() == "invest")
         {
             img = '<li> <img src="/images/invest.png" style="height: 18em; width: 32em;") </li>';
+            img += '<div class="wrapper"><a href="/map?hobby_type=교양" class="btn10"><span>탐구형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
             $("#YourType").html(img);
         }
         if($(this).val() == "real")
         {
             img = '<li> <img src="/images/real.png" style="height: 18em; width: 32em;") </li>';
+            img += '<div class="wrapper"><a href="/map?hobby_type=레포츠" class="btn10"><span>실재형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
             $("#YourType").html(img);
         }
-         if($(this).val() == "social")
+        if($(this).val() == "social")
         {
             img = '<li> <img src="/images/social.png" style="height: 18em; width: 32em;") </li>';
+            img += '<div class="wrapper"><a href="/map?hobby_type=어학" class="btn10"><span>사회형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
             $("#YourType").html(img);
         }
 
