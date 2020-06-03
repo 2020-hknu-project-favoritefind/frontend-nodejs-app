@@ -6,38 +6,43 @@ block content
   link(rel="stylesheet", href="/stylesheets/test.css")
   script(src="/javascripts/map.js")
   script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDisIjvcok9Z6WtoPPNA7PLzXoRf7B4rw" async defer)
+  
   <!-- 큰 카테고리 지도-->
   div#subcategory
   h1 당신에게 추천하는 장소는?
   div#map(style="width:100%;height:350px;")
 
-  <!-- 작은 카테고리1 필터랑 목록 -->
-  div(style="height: 2em;")
-  div#filter
-    #sub
-    span 필터　
-    i.fas.fa-list
-    button.btn.h-100(id=search type="button" onclick="sorting_name()") 가나다 순 
-      i.fas.fa-sort-alpha-down
-    button.btn.h-100(type="button" onclick="sorting_dis()") 거리 순 
-      i.fas.fa-map-marked-alt
-    button.btn.h-100(type="button" onclick="sorting_like()") 인기 순 
-      i.fas.fa-thumbs-up
-  ul.list-group(id='output')
-  
-  <!-- 작은 카테고리2 필터랑 목록 -->
+  a(href="#target1") 첫번째 서브 카테고리
   br
-  div(style="height: 2em;")
-  div#filter
-    #sub2
-    span 필터　
-    i.fas.fa-list
-    button.btn.h-100(id=search type="button" onclick="sorting_name2()") 가나다 순 
-      i.fas.fa-sort-alpha-down
-    button.btn.h-100(type="button" onclick="sorting_dis2()") 거리 순 
-      i.fas.fa-map-marked-alt
-    button.btn.h-100(type="button" onclick="sorting_like2()") 인기 순 
-      i.fas.fa-thumbs-up
-  ul.list-group(id='output2')
+  a(href="#target2") 두번째 서브 카테고리
 
-  //script(src="/javascripts/category_real.js")
+  a(name="target1")
+    <!-- 작은 카테고리1 필터랑 목록 -->
+    div(style="height: 2em;")
+    div#filter
+      #sub
+      span 필터　
+      i.fas.fa-list
+      button.btn.h-100(id=search type="button" onclick="sorting_name()") 가나다 순 
+        i.fas.fa-sort-alpha-down
+      button.btn.h-100(type="button" onclick="sorting_dis()") 거리 순 
+        i.fas.fa-map-marked-alt
+      button.btn.h-100(type="button" onclick="sorting_like()") 인기 순 
+        i.fas.fa-thumbs-up
+    ul.list-group(id='output')
+  
+  a(name="target2")
+    <!-- 작은 카테고리2 필터랑 목록 -->
+    br
+    div(style="height: 2em;")
+    div#filter
+      #sub2
+      span 필터　
+      i.fas.fa-list
+      button.btn.h-100(id=search type="button" onclick="sorting_name2()") 가나다 순 
+        i.fas.fa-sort-alpha-down
+      button.btn.h-100(type="button" onclick="sorting_dis2()") 거리 순 
+        i.fas.fa-map-marked-alt
+      button.btn.h-100(type="button" onclick="sorting_like2()") 인기 순 
+        i.fas.fa-thumbs-up
+    ul.list-group(id='output2')

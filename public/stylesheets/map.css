@@ -31,4 +31,9 @@ div#filter > button > svg {
     color:#F78181;
 }
 
-/* 리스트 */
+/* infowindow 크기 */
+#MarkerText
+{
+    width:285px;
+    height:130px;
+}

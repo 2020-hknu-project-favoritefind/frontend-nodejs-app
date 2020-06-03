@@ -4,9 +4,11 @@
 
 /* 지도 변수 */
 var map; //구글지도 담기
-var user_latitude; //유저 경도
-var user_logitude; //유저 위도
+var user_latitude = 0; //유저 경도
+var user_longitude = 0; //유저 위도
 var city; //유저 지역
+var marker;
+var infoWindow;
 
 /* 함수 */
 
@@ -23,6 +25,8 @@ function getMyLocation() {
 
 function displayLocation(position)
 {
+    window.user_latitude = position.coords.latitude;
+    window.user_longitude = position.coords.longitude;
     showMap(position.coords);
 }
 
@@ -30,7 +34,7 @@ function showMap(coords)
 {
     var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
     var mapOptions = {
-        zoom: 11,
+        zoom: 13,
         center: googleLatAndLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -38,7 +42,7 @@ function showMap(coords)
     map = new google.maps.Map(mapDiv, mapOptions);
 
     var title="취미 장소";
-    var content="위도: "+coords.latitude+" 경도: "+coords.longitude+" "; //클릭했을 때
+    var content="당신의 위치는 현재 여기입니다!";//클릭했을 때
     addMarker(map, googleLatAndLong, title, content);
 }
 
@@ -50,12 +54,12 @@ function addMarker(map, latlong, title, content)
         map: map,
         title: title,
         clickable: true,
-        img: "/images/marker.png"
+        icon: "/images/user.png"
 
     };
     
-    var marker = new google.maps.Marker(markerOptions);
-    var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+    marker = new google.maps.Marker(markerOptions);
+
     
     var infoWindowOptions = 
     {
@@ -63,16 +67,19 @@ function addMarker(map, latlong, title, content)
         position: latlong
     };
 
+    infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+    
+
     google.maps.event.addListener(marker, "click", function()
     {
         infoWindow.open(map);
     });
 
-    geocodeLatLng(map, infoWindow);
+    geocodeLatLng(map);
 }
 
 //2. 위도 경도로 도시 이름 가져오기
-function geocodeLatLng(map, infoWindow)
+function geocodeLatLng(map)
 {
     var geocoder = new google.maps.Geocoder;
     var latlng = {lat: parseFloat(user_latitude), lng: parseFloat(user_longitude)};
@@ -83,21 +90,11 @@ function geocodeLatLng(map, infoWindow)
             if(results[0])
             {
                 city = results[0];
-                map.setZoom(14);
-                var marker = new google.maps.Marker({
-                    position: latlng,
-                    map: map,
-                    //img: "/images/marker.png"
-                });
-
-            infoWindow.setContent("현재 사용자 위치 " + results[0].formatted_address);
-            infoWindow.open(map, marker);
-
-            city = results[0].formatted_address.split(' ')[2]; //전체주소에서 도시 뽑기
-            console.log(city);
-            placeRecommend(city);
-        }
-        else{
+                city = results[0].formatted_address.split(' ')[2]; //전체주소에서 도시 뽑기
+                placeRecommend(city);
+            }
+        else
+        {
             window.alert('No results found');
         }
     }
@@ -110,8 +107,6 @@ function geocodeLatLng(map, infoWindow)
 
 /* 변수 */
 var result = get_query();
-var user_latitude = 0; //사용자 위도
-var user_longitude = 0; //사용자 경도
 
 var category = []; //카테고리명
 var placename = []; //시설명
@@ -169,29 +164,6 @@ function get_query(){
     }
     return result;
 }
-
-
-// 2. 유저 위도 경도 다시 가져오기
-$(document).ready(function()
-{
-    
-    function getMyLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(displayLatitude);
-        } else {
-            alert("Oops, no geolocation support");
-        }
-    }
-    
-    function displayLatitude(position)
-    {
-        window.user_latitude = position.coords.latitude;
-        window.user_longitude = position.coords.longitude;
-    }
-    getMyLocation();
-})
-
-var sort = 1;
 
 /* 목록 정렬 */
 
@@ -255,9 +227,6 @@ function sorting_name2()
 //2. 거리순 정렬
 function sorting_dis()
 {
-    console.log(user_latitude);
-    console.log(user_longitude);
-
     all = all.filter(function(item)
     {
         return item !== null && item !== undefined && item !== '';
@@ -290,9 +259,6 @@ function sorting_dis()
 
 function sorting_dis2()
 {
-    console.log(user_latitude);
-    console.log(user_longitude);
-
     all2 = all2.filter(function(item)
     {
         return item !== null && item !== undefined && item !== '';
@@ -377,7 +343,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[교양] 공연장",
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -435,7 +401,7 @@ function placeRecommend(city)
                             y: latitude2[i],
                             x: longitude2[i],
                             img: "/images/marker.png",
-                            category: category2[i],
+                            category: "[교양] 영화관",
                             name: placename2[i],
                             etc: phone2[i]
                         };
@@ -497,7 +463,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[레포츠] 체육관",
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -552,7 +518,7 @@ function placeRecommend(city)
                             y: latitude3[i],
                             x: longitude3[i],
                             img: "/images/marker.png",
-                            category: category3[i],
+                            category: "[레포츠] 체육도장",
                             name: placename3[i],
                             etc: phone3[i]
                         };
@@ -619,7 +585,7 @@ function placeRecommend(city)
                             y: latitude4[i],
                             x: longitude4[i],
                             img: "/images/marker.png",
-                            category: category4[i],
+                            category: "[레포츠] 수영장",
                             name: placename4[i],
                             etc: phone4[i]
                         };
@@ -690,7 +656,7 @@ function placeRecommend(city)
                             y: latitude2[i],
                             x: longitude2[i],
                             img: "/images/marker.png",
-                            category: category2[i],
+                            category: "[레포츠] 낚시터",
                             name: placename2[i],
                             etc: phone2[i]
                         };
@@ -755,7 +721,7 @@ function placeRecommend(city)
                             y: latitude2[i],
                             x: longitude2[i],
                             img: "/images/marker.png",
-                            category: category2[i],
+                            category: "[미술] 만화",
                             name: placename2[i],
                             etc: phone2[i]
                         };
@@ -798,7 +764,7 @@ function placeRecommend(city)
                                 y: latitude[i],
                                 x: longitude[i],
                                 img: "/images/marker.png",
-                                category: category[i],
+                                category: "[미술] 미술",
                                 name: placename[i],
                                 etc: phone[i]
                             };
@@ -870,7 +836,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[공예] 컴퓨터",
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -912,7 +878,7 @@ function placeRecommend(city)
                                 y: latitude2[i],
                                 x: longitude2[i],
                                 img: "/images/marker.png",
-                                category: category2[i],
+                                category: "[공예] "+category2[i],
                                 name: placename2[i],
                                 etc: phone2[i]
                             };
@@ -983,7 +949,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[어학] "+category[i],
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -1025,7 +991,7 @@ function placeRecommend(city)
                                 y: latitude2[i],
                                 x: longitude2[i],
                                 img: "/images/marker.png",
-                                category: category2[i],
+                                category: "[어학] "+category2[i],
                                 name: placename2[i],
                                 etc: phone2[i]
                             };
@@ -1095,7 +1061,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[무용] 현대무용",
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -1154,7 +1120,7 @@ function placeRecommend(city)
                                 y: latitude2[i],
                                 x: longitude2[i],
                                 img: "/images/marker.png",
-                                category: category2[i],
+                                category: "[무용] 현대무용 / 연기",
                                 name: placename2[i],
                                 etc: phone2[i]
                             };
@@ -1223,7 +1189,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[요리] 요리",
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -1265,7 +1231,7 @@ function placeRecommend(city)
                                 y: latitude2[i],
                                 x: longitude2[i],
                                 img: "/images/marker.png",
-                                category: category2[i],
+                                category: "[요리] 바리스타",
                                 name: placename2[i],
                                 etc: phone2[i]
                             };
@@ -1338,7 +1304,7 @@ function placeRecommend(city)
                             y: latitude[i],
                             x: longitude[i],
                             img: "/images/marker.png",
-                            category: category[i],
+                            category: "[음악] 보컬",
                             name: placename[i],
                             etc: phone[i]
                         };
@@ -1380,7 +1346,7 @@ function placeRecommend(city)
                                 y: latitude2[i],
                                 x: longitude2[i],
                                 img: "/images/marker.png",
-                                category: category2[i],
+                                category: "[음악] 악기",
                                 name: placename2[i],
                                 etc: phone2[i]
                             };
@@ -1440,7 +1406,7 @@ function placeRecommend(city)
                             y: latitude3[i],
                             x: longitude3[i],
                             img: "/images/marker.png",
-                            category: category3[i],
+                            category: "[음악] 노래방",
                             name: placename3[i],
                             etc: phone3[i]
                         };
@@ -1518,7 +1484,7 @@ function placeRecommend(city)
                                 y: latitude[i],
                                 x: longitude[i],
                                 img: "/images/marker.png",
-                                category: category[i],
+                                category: "[패션] 미용",
                                 name: placename[i],
                                 etc: phone[i]
                             };
@@ -1561,7 +1527,7 @@ function placeRecommend(city)
                                 y: latitude2[i],
                                 x: longitude2[i],
                                 img: "/images/marker.png",
-                                category: category2[i],
+                                category: "[패션] 네일(뷰티)",
                                 name: placename2[i],
                                 etc: phone2[i]
                             };
@@ -1580,48 +1546,55 @@ function placeRecommend(city)
     }
 }
 
-var markers = [];
-/* 마커 추가 */
-//map 마커 추가 정보
-function addSymbol(obj) {//zoomYN: zoom 변경 여부(없어도 상관 x)
+/* 장소 목록들 마커 */
+function addSymbol(obj) 
+{
  
+    /* 마커 추가*/
     marker = new google.maps.Marker({
         position: new google.maps.LatLng(obj.y , obj.x), //마커가 위치할 위도,경도
         icon: obj.img, // 마커로 사용할 이미지
-        title: obj.title // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+        title: obj.title, // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+        map: map
     });
-/*
-    new google.maps.InfoWindow(infoWindowOptions);
-   
-    var infoWindowOptions = 
+
+    /* 위도 경도로 주소 알아내기 */
+    var address = "";
+    var geocoder = new google.maps.Geocoder;
+    var latlng = {lat: parseFloat(obj.y), lng: parseFloat(obj.x)};
+    geocoder.geocode({'location': latlng}, function(results, status)
     {
-        content: "<카테고리>"+obj.category+"<br>"+"<이름>"+obj.name+"<br><기타>"+obj.etc, //보여줄 내용
-    };
-
-    infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-    //marker listener등록
-    marker.addListener('click', function() { //마커 클릭시 이벤트
-    infoWindow.open(map, marker); //인포윈도우 열기
+        if(status == 'OK')
+        {
+            if(results[0])
+            {
+                address = results[0].formatted_address; //전체주소
+                if(results[0] == " ")
+                {
+                    address = "주소 정보를 찾지 못했습니다";
+                }
+            }
+        else
+        {
+            console("지오코딩 에러");
+        }
+    }
     });
-*/
-    marker.setMap(map); //map 그리기
-    markers.push(marker); //마커 정보 배열 등록(삭제를 위한 배열)
 
+    /* 마커 이벤트 리스너 */
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+        return function() {
+            
+            content = '<div id="MarkerText"><h4>'+obj.name+'</h4><p>카테고리: '+
+            obj.category+'<br>주소: '+address+'<br>기타 정보: '+obj.etc+
+            '</p><a target="_blank" href=" /placedetail?name='+obj.name+'&latitude='+obj.y+'&longitude='+obj.x+'"><p>자세한 정보 확인하기</p></a></div>';
+            //html로 표시될 인포 윈도우의 내용
+            infoWindow.setContent(content);
+            
+            //인포윈도우가 표시될 위치
+            infoWindow.open(map, marker);
+            map.setZoom(14);
+        }
+    })(marker));
+}
     
-
-   }
-    
-    
-   /**
-    * 모든 마커 삭제
-    * @param  :
-    *    
-    */
-   function deleteMarkers() {
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-      }
-    
-      markers = [];
-   }
-   
