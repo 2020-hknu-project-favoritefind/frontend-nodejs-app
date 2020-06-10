@@ -10,7 +10,7 @@ block content
         h2(style="font-family: 'Comic Neue', cursive;") login
         h6 　
         <!-- 아이디/비밀번호/회원가입-->
-        form(accept-charset="UTF-8" role="form" action="/")
+        form(accept-charset="UTF-8" role="form" method="post" action="/login/process")
           .form-group
             input.form-control(type="text" value='' id="username" name="user_id" placeholder="아이디" maxlength=20 style="color: navy;")
           .form-group

@@ -14,6 +14,7 @@ router.get('/place/best', ctrlHobby.best); //인기 장소
 
 /* GET User pages */
 router.get('/login', ctrlUser.login); //로그인
+router.post('/login/process', ctrlUser.login_process);// 로그인 과정
 router.get('/join', ctrlUser.join); //회원가입
 router.post('/join/process', ctrlUser.join_process);//회원가입 과정
 router.get('/like', ctrlUser.like); //즐겨찾기
