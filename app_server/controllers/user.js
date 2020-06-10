@@ -31,11 +31,11 @@ module.exports.join_process = async function (req, res) {
 
     const hash = new SHA3(512);
     hash.update(req.body.password);
-    await axios.post(`http://45.32.36.198/auth?id=${req.body.user_id}&pw=${hash.digest("hex")}`);
+    await axios.post(`http://45.32.36.198/auth?id=${req.body.user_id}&pw=${hash.digest("hex")}&username=${encodeURI(req.body.user_name)}`);
     res.redirect("/");
 }
 
 /* 즐겨찾기 */
 module.exports.like = function (req, res) {
-    res.render('like', { title: '즐겨찾기' });
+    res.render('like', { title: '즐겨찾기', user_id: req.session.user_id });
 };
