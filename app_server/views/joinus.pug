@@ -10,16 +10,16 @@ block content
         h2(style="font-family: 'Comic Neue', cursive;") join us　
         br
         <!-- 이름/아이디/비밀번호-->
-        form(accept-charset="UTF-8" role="form" action="/")
+        form(accept-charset="UTF-8" role="form" action="/join/process" method="post")
           .form-group
             label.must(for="user_name") 이름
-            input.form-control(name="user_name" id="user_name" value='' type="text" style="color: navy;")
+            input.form-control(name="user_name" id="user_name" value='' type="text" style="color: navy;" required)
           .form-group
             label.must(for="user_id") 아이디
-            input.form-control(type="text" value='' id="user_id" name="user_id" style="color: navy;")
+            input.form-control(type="text" value='' id="user_id" name="user_id" maxlength=20 style="color: navy;" required)
           .form-group
             label.must(for="password") 비밀번호
-            input.form-control(name="password" id="password" value='' type="text" style="color: navy;")
+            input.form-control(name="password" id="password" value='' type="password" style="color: navy;" required)
           hr 
           .from-group
             input.btn.btn-defalut.btn-login-submit.btn-block.m-t-md(type="submit" value="JOIN" style="background-color: #344073; color:white; font-family: 'Baloo Thambi 2', cursive; font-size: 20px;")
