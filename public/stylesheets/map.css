@@ -2,3 +2,38 @@ span.badge.badge-pill {
     font-size: 1.2rem;
     margin: 0.2rem;
 }
+
+div#filter
+{
+    padding: 0.5rem;
+}
+
+span
+{
+    color:#F78181;
+    font-family: "Gugi", cursive;
+}
+
+div#filter > svg {
+    font-size: 1.1rem;
+    color:#F78181;
+}
+
+div#filter > button {
+    color: #4E4E4E;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin: 1rem;
+    background-color: #CEECF5;
+}
+
+div#filter > button > svg {
+    color:#F78181;
+}
+
+/* infowindow 크기 */
+#MarkerText
+{
+    width:285px;
+    height:130px;
+}

@@ -32,3 +32,8 @@ module.exports.add = function (req, res) {
 module.exports.best = function (req, res) {
     res.render('best', { title: 'TOP 20' });
 };
+
+/* 장소 검색 */
+module.exports.detail = function (req, res) {
+    res.render('detail', { title: 'PLACE DETAILE' });
+};

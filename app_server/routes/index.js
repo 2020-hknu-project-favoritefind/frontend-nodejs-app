@@ -11,6 +11,7 @@ router.get('/map', ctrlHobby.map) //장소 추천2-지도랑 보여주기
 router.get('/place', ctrlHobby.place) //카테고리에서 클릭
 router.get('/place/add', ctrlHobby.add); //장소 추가
 router.get('/place/best', ctrlHobby.best); //인기 장소
+router.get('/placedetail', ctrlHobby.detail); //장소 세부 정보
 
 /* GET User pages */
 router.get('/login', ctrlUser.login); //로그인
