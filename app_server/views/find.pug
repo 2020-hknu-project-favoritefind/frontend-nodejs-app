@@ -1,40 +1,54 @@
 extends layout
 
 block content
-  link(rel="stylesheet", href="/stylesheets/find.css")
+  link(rel="stylesheet", href="/stylesheets/home.css")
+  link(rel="stylesheet", href="/stylesheets/test.css")
+  script(src="/javascripts/find.js")
+  
+  div(style="height: 2em;")
+  div.text-center#search
+    button.btn.h-100(onclick="location.href='/test'" type="button") 취미분석 
+      i.fas.fa-chart-pie
+    button.btn.h-100(onclick="location.href='/place/add'") 장소추가 
+      i.fas.fa-plus-circle
+    button.btn.h-100(onclick="location.href='/place/best'") 인기장소 
+      i.fas.fa-heart
+  div.row
+    div.col-sm-2
+    div.col-sm-8
+      form.input-group.row#search-bar
+        input.form-control(type="search" placeholder="장소를 검색해주세요")
+        div.input-group-append
+          button.btn(type="button" style="background-color: #010E4F; font-size: 1.2rem; padding: 0px 10px 10px 10px;")
+            i.fas.fa-search.white
+    div.col-sm-2
 
-  <!-- 선호 장소 질문 -->
-  h1 원하는 장소 찾기
-  form(action="/map")
-    h2 당신이 선호하는 장소는?
-    div.container.btn-group-toggle#question1(data-toggle="buttons")
-      label.btn.btn-info.active 실내
-        input#indoor(name="inout" value="실내" type="radio" autocomplete="off" checked)
-      label.btn.btn-info 실외
-        input#outdoor(name="inout" value="실외" type="radio" autocomplete="off")
+  br
+  br
+  h1 어떤 취미가 잘 맞을까요?
+  p 　직업흥미유형별 결과(T점수)에서 가장 높은 점수가 나온 유형을 확인해주세요!
+  br
+  .container
+    ul.list-group(id='testEnd')
+  <!--검사 inspct.career.go.kr/openapi/test/questions?apikey=인증키&q=심리검사변수 >
+  <!--결과 inspct.career.go.kr/openapi/test/report?apikey=인증키&qestrnSeq=심리검사변수>
+  <!--결과 타입에 따라 다르게 사용자에게 이미지 보여주고 싶음 (images 폴더에 만들어놓음)-->
+  br
+  br
+  h1(style="margin-top: 3rem;") 당신의 홀랜드 유형에 맞는 활동은?
+  .container
+    p 확인한 홀랜드 유형을 클릭해주세요!
+    form(accept-charset="UTF-8")
+    .form-group
+      label 유형
+      select.form-control(name="TestType" id="TestType")
+        option(value="convention") 관습형
+        option(value="enterprise") 기업형
+        option(value="social") 사회형
+        option(value="real") 실재형
+        option(value="artistic") 예술형
+        option(value="invest") 탐구형
+  
 
-    
-    h2.must 당신이 선호하는 분야는?
-    div.container.btn-group-toggle#question2(data-toggle="buttons")
-      label.btn.btn-info 교양
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="교양")
-      label.btn.btn-info 레포츠
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="레포츠")
-      label.btn.btn-info 미술
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="미술")
-      label.btn.btn-info 공예
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="공예")
-      label.btn.btn-info 어학
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="어학")
-      label.btn.btn-info 춤
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="춤")
-      label.btn.btn-info 요리
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="요리")
-      label.btn.btn-info 음악
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="음악")
-      label.btn.btn-info 패션
-        input(type="checkbox" name="hobby-type" autocomplete="off" value="패션")
-      
-    hr
+    ul.list-group(id='YourType' style="list-style: none;")
 
-    input.btn(type="submit" value="검색" style="background-color: #344073;")

@@ -21,21 +21,21 @@ form#search-bar * {
 
 
 /* 분야 목록 */
-article#hobby-type a {
+article#hobby_type a {
     text-align: center;
     color: black;
 }
 
-article#hobby-type a:hover {
+article#hobby_type a:hover {
     text-decoration: none;
 }
 
-article#hobby-type img {
+article#hobby_type img {
     width: 100%;
     border-radius: 10%;
 }
 
-article#hobby-type button{
+article#hobby_type button{
     background-color:transparent;  
     border:0px transparent solid;
 }
