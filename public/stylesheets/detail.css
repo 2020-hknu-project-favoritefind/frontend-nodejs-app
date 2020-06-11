@@ -11,3 +11,97 @@ h5 {
     padding-bottom: 1.0rem;
     font-family: "Nanum Gothic", sans-serif;
 }
+
+
+/* 카드 레이아웃 */
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+.card-all {
+	height: 500px;
+	width: 400px;
+	border-radius: 15px;
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 30px;
+	margin-bottom: 30px;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	overflow: hidden;
+}
+
+.card-header {
+	transition: 0.5s; /*사파리 & 크롬*/
+    -moz-transition: 0.5s;  /*파이어폭스*/
+    -ms-transition: 0.5s;	/*인터넷 익스플로러*/
+    transition: 0.5s;
+	width: 100%;
+	height: 250px;
+	border-radius: 15px 15px 0 0;
+	background-size: 100% 280px;
+	background-repeat: no-repeat;	
+
+}
+
+.card-all:hover .card-header{
+	opacity: 0.8;
+	height: 100px;
+}
+
+.card-header-is_closed{
+    background-color: rgb(164, 202, 236) ;
+    color: rgb(7, 4, 46) ;
+    font-weight: bold ;
+    text-align: center ;
+    float: right;
+    margin: 15px 15px 0 0;
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 10px 10px;
+    line-height: 20px;
+}
+
+
+
+.card-header-star{
+    color: #f4f5c2;
+    font-weight: bold ;
+    text-align: center ;
+    float: left;
+    margin: 15px 15px 0 0;
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 5px 5px;
+    line-height: 10px;
+}
+
+.card-body-header{
+	line-height: 25px;
+	margin: 10px 20px 0px 20px;
+}
+
+.card-body-description  {
+    opacity: 0;
+    color: #757B82;
+    line-height: 20px;
+    transition: .2s ease-in-out; /*사파리&크롬*/
+    -moz-transition: .2s ease-in-out; /*파이어폭스*/
+    -ms-transition: .2s ease-in-out; /*익스플로러*/
+    transition : .2s ease-in-out;
+    overflow: hidden;
+        height: 400px;
+	    margin: 5px 10px;
+}
+
+.card-all:hover .card-body-description {
+    opacity: 1;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -ms-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition : .5s ease-in-out;
+    overflow: scroll;
+}

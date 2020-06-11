@@ -33,91 +33,138 @@ function search()
     {
         query: name,
         location: new google.maps.LatLng(latitude , longitude),
-        radius: '30'
+        radius: 10,
+        language: "ko"
     };            
     // 요청
     service.textSearch(request, function(results, status)
     {
         if (status == google.maps.places.PlacesServiceStatus.OK) 
         {
-            $("#search_text").html('<section style="display: flex; justify-content: space-between;">');
+            $("#search_detail").html('<div class="cards">');
             for (var i = 0; i < results.length; i++) 
             {
                 var place = results[i];
-                getPlaceDetail(place.place_id, i);
-                console.log(place);
-                /* 결과 
-                장소 이름 : name
-                아이디 - 세부 정보 요청에 사용 : place_id
-                위도랑 경도 제공 : geometry.location
-                영업 중 - opening_hours.open_now
-                평점 - rating
-                주소 - formatted_address
-                */
-                $("#search_text").append('<article style="width:width: 320px; padding: 20px; border: 1px solid #c9c9c9;">'+
-                '<h5>'+place.name+'</h5>'+
-                '<p>주소: '+place.formatted_address+'</p>'+
-                '<p>운영 상태:'+place.business_status+'</p>'+
-                '<p>평점: '+place.rating+'</p>'+
-                '<a href="#layer'+[i]+'">자세히 보기</a></article>');
-                console.log(place.photos[0].getUrl({maxWidth: 70, maxHeight: 50}));
+                console.log(i+'번째 함수 호출하겠음');
+                getPlaceDetail(place, i);
+                $("#search_detail").append('</div>');
             }
-            $("#search_text").append('</section>')
-        }
-        else if(status == google.maps.places.PlacesServiceStatus.INVALID_REQUEST)
-        {
-            console.log('INVALID_REQUEST ', status);
-        }
-        else if(status == google.maps.places.PlacesServiceStatus.ERROR)
-        {
-            console.log('ERROR ', status);
         }
         else if(google.maps.places.PlacesServiceStatus.ZERO_RESULTS)
         {
-            console.log("검색 결과가 아쉽게도 없습니다");
             $("#search").html("<h5>검색 결과가 없습니다.</h5><br><br><p>다음 포털 사이트에서 검색하기</p>"+
             '<a href="https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query='+name+'"><img src="/images/naver.png" width="50" height="50" style="padding: 0.5rem; alt="네이버로 장소 검색하기"></img></a>'+
             '<a href="https://www.google.com/search?q='+name+'&oq='+name+'&aqs=chrome..69i57j0l4j69i60l2j69i61.3055j0j7&sourceid=chrome&ie=UTF-8"><img src="/images/google.png" width="50" height="50" style="padding: 0.5rem; alt="구글로 장소 검색하기"></img></a>');
+        }
+        else
+        {
+            console.log('에러: '+status);
         }
     });
 }
 
 // 장소 ID로 상세 정보 받기
-function getPlaceDetail(searchPlaceID, num)
+function getPlaceDetail(searchPlace, num)
 {
-    console.log(searchPlaceID);
+    console.log(num+'번째 detail 함수 들어옴!');
     
-    /*
     // 받고 싶은 필드 목록
     var totalFields = ['address_component', 'adr_address', 'alt_id', 'formatted_address', 'geometry', 'icon', 'id', 'name',
     'photo', 'place_id', 'scope', 'type', 'url', 'vicinity', 'formatted_phone_number',
     'opening_hours', 'website', 'rating', 'review'];
-    
     var request = 
     {
-        placeId: searchPlaceID,
+        placeId: searchPlace.place_id,
         fields: totalFields
-    };
-            
-    service.getDetails(request, function(results, status)
+    };     
+    service.getDetails(request, function(result, status)
     {
+        console.log(num+'번째 detail 서비스 요청 시작!');
+        var place = result;
+
         if (status == google.maps.places.PlacesServiceStatus.OK) 
         {
-            $("#search_detail").html('<div id="layer'+num+'" class="pop-layer">'+
-            '<div class="pop-container">'+
-            '<div class="pop=conts">'+
-            '<h4>'+place.name+'</h4>'+
-            '<p class="ctxt mb20">'+
-            '<img>'+place.photos[0].getUrl()+'</img>'+
-            '주소: '+place.formatted_address+'<br>'+
-            '전화번호: '+place.formatted_phone_number+'<br>'+
-            '영업시간: '+place.opnening_hours.periods+'<br>'+
-            '평점: '+place.rating+'<br>'+
-            '리뷰: '+place.reviews+'<br>'+
-            '홈페이지: '+place.website+'<br>'+
-            '<a href='+place.url+'>더 자세한 정보 확인하기</a></p>'+
-            '<div class="btn-r">'+
-            '<a href="#" class="btn-layerClose">Close</a></div></div></div></div>')
+            /* 내부 변수 */
+            var photo = place.photos[0];
+
+            var photourl=photo.getUrl({"maxWidth": 400, "maxHeight": 400});
+            
+            var open = ""; //오픈 여부 직관적으로
+            if(place.opening_hours == null)
+            {
+                open = "MAYBE CLOSE";
+            }
+            else if(place.opening_hours.open_now == true)
+            {
+                open = "OPEN";
+            }
+            else
+            {
+                open = "CLOSE";
+            }
+
+            var price = "";
+            if(place.price_level == 0)
+            {
+                price = "무료";
+            }
+            else if (place.price_level == 1)
+            {
+                price = "저렴";
+            }
+            else if (place.price_level == 2)
+            {
+                price = "보통";
+            }
+            else if (place.price_level == 3)
+            {
+                price = "고가";
+            }
+            else
+            {
+                price = "매우 고가";
+            }
+
+            var review = place.reviews[0];
+            var rating = 0.0;
+            var ratingText = "";
+            if (review == null)
+            {
+                rating = "데이터 없습니다.";
+                ratingText = "아직 리뷰가 없습니다.";
+            }
+            else
+            {
+                rating = review.rating;
+                ratingText = review.text;
+            }
+
+            //1. 첫번째로 간단히 카드 레이아웃 보여주기
+            $("#search_detail").append('<div class="card'+num+'">'+'<div class="card-all">'+'<div class="card-header" style="background-image: url('+"'"+photourl+"')"+'">'+'<div class="card-header-is_closed">'+open+'</div>'+
+            '<div class="card-header-star"><a href=""><i class="fa fa-star" aria-hidden="true"></i></a>'+'</div></div>'+ //a에 즐겨찾기 버튼 추가하게 추가하기
+            //card-header
+            '<div class="card-body">'+
+            '<div class="card-body-header">'+
+            '<h1>'+place.name+'</h1>'+
+            //'<img src="'+photourl+'"></img>'+
+            '<p class="card-body-first">'+
+            place.formatted_address+'<br>'+
+            place.formatted_phone_number+'<br>'+
+            '<a href="'+place.website+'">'+place.website+'</a></p>'+
+            '</div>'+ //card-body-header (first)
+
+            //2. 두번째로 자세한 카드 레이아웃 보여주기
+            '<p class="card-body-description">'+
+            //place.opening_hours.weekday_text+'<br>'+
+            '평점: '+rating+'<br>'+
+            '리뷰: '+ratingText+'<br>'+
+            '가격: '+price+'<br>'+
+            '<a href="'+place.url+'"> 더 자세한 정보 </a>'+
+            '</p>'+ //card-body (second)
+            '</div></div>' //card-body, card-all, card-i
+            );
+            
+            console.log(num+'번째 레이아웃 잘 들어감?');
         }
         else if(status == google.maps.places.PlacesServiceStatus.INVALID_REQUEST)
         {
@@ -129,11 +176,26 @@ function getPlaceDetail(searchPlaceID, num)
         }
         else if(google.maps.places.PlacesServiceStatus.ZERO_RESULTS)
         {
-            console.log("검색 결과가 아쉽게도 없습니다");
-            $("#search_text").append("<h5>검색 결과가 존재하지 않습니다.</h5>");
+            console.log("DB에 있는 내용이 표시되도록 재구현할 예정");
         }
     });
-    */
+    
 }
+
+            /*Google Library 결과 
+                //아이디 - 세부 정보 요청에 사용 : place_id
+                영업 중 - opening_hours.open_now //true면 운영중, false면 중단
+                아이콘 - icon
+                장소 이름 - name
+                주소 - formatted_address
+                연락처 - international_phone_number
+                영업 시간 - opening_hours.weekday_text
+                평점 - rating
+                리뷰 - reviews[]
+                가격 수준 - price level (0 무료 ~ 4 매우 비싸다)
+                웹사이트 - website
+                사진 - photos
+                더 자세한 정보 - url
+            */
 
 

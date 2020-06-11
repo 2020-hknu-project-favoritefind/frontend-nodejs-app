@@ -297,6 +297,12 @@ function placeRecommend(city)
     /* 교양 */
     if (result.hobby_type == "교양")
     {
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Concert Hall </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Movie Theaters </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>교양 1. Concert Hall ...</span>";
 
@@ -419,6 +425,12 @@ function placeRecommend(city)
     if (result.hobby_type == "레포츠")
     {
         //1. 스포츠
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Sports </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Fishing Hole </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>레포츠 1. Sport ...</span>";
 
@@ -673,6 +685,12 @@ function placeRecommend(city)
     /* 미술 */
     if (result.hobby_type == "미술")
     {
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Art </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Cartoon </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>미술 1. Art ...</span>";
 
@@ -788,6 +806,12 @@ function placeRecommend(city)
     /* 공예  */
     if (result.hobby_type == "공예")
     {
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Programming </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Making </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>공예 1. Programming ...</span>";
 
@@ -900,6 +924,12 @@ function placeRecommend(city)
     /* 어학 */
     if (result.hobby_type == "어학")
     {
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Language </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Speaking </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>어학 1. Language ...</span>";
 
@@ -1013,6 +1043,12 @@ function placeRecommend(city)
     /* 춤 */
     if (result.hobby_type == "춤")
     {
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Modern Dance </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Dancing </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>춤 1. Modern Dance ...</span>";
 
@@ -1138,7 +1174,12 @@ function placeRecommend(city)
     /* 요리 */
     if (result.hobby_type == "요리")
     {
-        
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Cooking </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Barista </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>요리 1. Cook ...</span>";
 
@@ -1254,7 +1295,12 @@ function placeRecommend(city)
      /* 음악 */
     if (result.hobby_type == "음악")
     {
-
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Vocal </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Instrument </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>음악 1. vocal ...</span>";
 
@@ -1435,6 +1481,12 @@ function placeRecommend(city)
     /* 패션 */
     if (result.hobby_type == "패션")
     {
+        $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Hair </h5></a></button>');
+        $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
+            //'<img src="/images/submovie.PNG" id="place"></img>' +
+            '<h5> Beauty </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>패션 1. Hair ...</span>";
 
