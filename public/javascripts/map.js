@@ -298,10 +298,8 @@ function placeRecommend(city)
     if (result.hobby_type == "교양")
     {
         $("#subcat1").html('<button id="subcat" style="float: left;"><a href="#target1">'+
-            //'<img src="/images/submovie.PNG" id="place"></img>' +
             '<h5> Concert Hall </h5></a></button>');
         $("#subcat2").html('<button id="subcat" style="float: left;"><a href="#target2">'+
-            //'<img src="/images/submovie.PNG" id="place"></img>' +
             '<h5> Movie Theaters </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>교양 1. Concert Hall ...</span>";

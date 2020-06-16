@@ -10,31 +10,17 @@ function getParam(sname) {
     return sval;
 }
 
-
-/* A=1, A=2, ... 형태로 가져오기 */
-var A = new Array(); //파라미터 > 유저 답 넣을 배열
-var AnswerStr = ""; //배열 > 스트링 > 결과 요청할 때
-var timestamp =+ new Date();
-
-$(document).ready(function()
+/* 결과 요청하는 함수 */
+function testScore()
 {
-    for(var i=0; i<=161; i++)
-    {
-        A[i]=getParam('answer'+i);
-        AnswerStr += ("A"+(i+1)+"="+A[i]+" ");
-    }
-
-    /* 결과 요청하는 함수 */
-    function testScore()
-    {
     var answerjs = {
-            "apikey":"68b58f114640274a7d06e220f62feac1",
-            "qestrnSeq" : "18",
-            "trgetSe": "100207",
-            "gender": "100323",
-            "grade": "3",
-            "startDtm": timestamp,
-            "answers": '"'+AnswerStr+'"'
+        "apikey":"68b58f114640274a7d06e220f62feac1",
+        "qestrnSeq" : "18",
+        "trgetSe": "100207",
+        "gender": "100323",
+        "grade": "3",
+        "startDtm": timestamp,
+        "answers": '"'+AnswerStr+'"'
     };
 
     $.ajax({
@@ -56,11 +42,11 @@ $(document).ready(function()
         }
         
     })
-    }
+}
 
-    /* 유형에 따라 나타나게 하는 함수 */
-    function yourHobby()
-    {
+/* 유형에 따라 나타나게 하는 함수 */
+function yourHobby()
+{
     var img = "";
     img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>'; //사진
     img += '<div class="wrapper"><a href="/map?hobby_type=공예" class="btn10"><span>관습형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
@@ -68,45 +54,61 @@ $(document).ready(function()
     
     $('select[name=TestType]').change(function()
     {
+        var imgText = $(this).val();
+        var hobbyType = "";
+        var typeText = "";
+
         if($(this).val() == "artistic")
         {
-            img = '<li> <img src="/images/artistic.png" style="height: 18em; width: 32em") </li>';
-            img += '<div class="wrapper"><a href="map?hobby_type=미술" class="btn10"><span>예술형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
-            $("#YourType").html(img);
+            hobbyType = "미술";
+            typeText = "예술";
         }
         if($(this).val() == "convention")
         {
-            img = '<li> <img src="/images/convention.png" style="height: 18em; width: 32em;") </li>';
-            img += '<div class="wrapper"><a href="/map?hobby_type=공예" class="btn10"><span>관습형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
-            $("#YourType").html(img);
+            hobbyType = "공예";
+            typeText = "관습";
         }
         if($(this).val() == "enterprise")
         {
-            img = '<li> <img src="/images/enterprise.png" style="height: 18em; width: 32em;") </li>';
-            img += '<div class="wrapper"><a href="/map?hobby_type=어학" class="btn10"><span>기업형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
-            $("#YourType").html(img);
+            hobbyType = "어학";
+            typeText = "기업";
         }
         if($(this).val() == "invest")
         {
-            img = '<li> <img src="/images/invest.png" style="height: 18em; width: 32em;") </li>';
-            img += '<div class="wrapper"><a href="/map?hobby_type=교양" class="btn10"><span>탐구형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
-            $("#YourType").html(img);
+            hobbyType = "교양";
+            typeText = "탐구";
         }
         if($(this).val() == "real")
         {
-            img = '<li> <img src="/images/real.png" style="height: 18em; width: 32em;") </li>';
-            img += '<div class="wrapper"><a href="/map?hobby_type=레포츠" class="btn10"><span>실재형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
-            $("#YourType").html(img);
+            hobbyType = "레포츠";
+            typeText = "실재";
         }
         if($(this).val() == "social")
         {
-            img = '<li> <img src="/images/social.png" style="height: 18em; width: 32em;") </li>';
-            img += '<div class="wrapper"><a href="/map?hobby_type=어학" class="btn10"><span>사회형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
-            $("#YourType").html(img);
+            hobbyType = "어학";
+            typeText = "사회";
         }
 
+        img = '<li> <img src="/images/'+imgText+'.png" style="height: 18em; width: 32em") </li>';
+        img += '<div class="wrapper"><a href="map?hobby_type='+hobbyType+'" class="btn10"><span>'+typeText+'형 취미 추천</span><div class="transition"></div></a></div>' //버튼-링크
+        $("#YourType").html(img);
     })
+}
+
+
+/* A=1, A=2, ... 형태로 가져오기 */
+var A = new Array(); //파라미터 > 유저 답 넣을 배열
+var AnswerStr = ""; //배열 > 스트링 > 결과 요청할 때
+var timestamp =+ new Date();
+
+$(document).ready(function()
+{
+    for(var i=0; i<=161; i++)
+    {
+        A[i]=getParam('answer'+i);
+        AnswerStr += ("A"+(i+1)+"="+A[i]+" ");
     }
+
     testScore();
     yourHobby();
 })

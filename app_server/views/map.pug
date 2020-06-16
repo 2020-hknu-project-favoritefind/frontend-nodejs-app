@@ -10,18 +10,14 @@ block content
   <!-- 큰 카테고리 지도-->
   div#subcategory
   h1 당신에게 추천하는 장소는?
-  div#map(style="width:100%;height:350px;")
-  hr
-
-  div#all(align:center)
-    div#subcat1
-        <!--img.max-small(src='/images/movie.PNG' id='place')-->
-        <!--h3(style="font-family: 'Noto Sans KR', sans-serif;") 영화관-->
-    div#subcat2
-        <!--img.max-small(src='/images/movie.PNG' id='place')-->
-        <!--h3(style="font-family: 'Noto Sans KR', sans-serif;") 수영장-->
-
+    img(src="/images/legend.PNG" style="width:150px; float:right;")
   br
+  div#map(style="width:100%; height:350px;")
+  br
+  div#all(style="clear:both; padding:5px;")
+    div#subcat1()
+    div#subcat2()
+  hr
   a(name="target1")
     <!-- 작은 카테고리1 필터랑 목록 -->
     div(style="height: 2em;")

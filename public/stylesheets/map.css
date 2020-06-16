@@ -1,5 +1,5 @@
 span.badge.badge-pill {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0.2rem;
 }
 
@@ -36,4 +36,46 @@ div#filter > button > svg {
 {
     width:285px;
     height:130px;
+}
+
+/* 버튼 css */
+#subcat
+{
+    margin-right: 60px;
+    width: 205px;
+    height: 40px;
+    font-size: 0.625em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+#subcat:hover
+{
+    background-color: #bee1f8;
+    box-shadow: 0px 15px 20px rgba(21, 141, 202, 0.2);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+a:link 
+{
+    color:black; text-decoration: none;
+}
+
+a:visited
+{
+    color:black; text-decoration: none;
+}
+
+a:hover
+{
+    color:black; text-decoration: none;
 }
