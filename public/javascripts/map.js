@@ -183,20 +183,42 @@ function sorting_name()
     /*다른 정보는 다르게*/
     if(all[0][2] == "체육도장업" || all[0][2] == "유통관련업")
     {
-        contentStr = '<li class="list-group-item">[이름]'+all[0][0] + '<br></br>[카테고리]'+all[0][6] + "<br></br>[주소]"+all[0][1]+"<br></br>[기타]"+all[0][2]+"</li>";
+        //체육 도장업 손보기
+        contentStr = '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+        '<h4>'+all[0][0]+'</h4><hr><h2>'+all[0][1]+"<br></br>"+all[0][2]+
+        '</h2><br><div class="sebu" align="center">'+
+        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[0][0]+"&latitude="+all[0][3]+"&longitude="+all[0][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+        '<button type="button" id="like">좋아요</button>'+
+        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
         for(var i=1; i<all.length; i++)
         {
-            contentStr += '<li class="list-group-item">[이름]'+all[i][0]+'<br></br>[카테고리]'+all[i][6] + "<br></br>[주소]"+all[i][1]+"<br></br>[기타]"+all[i][2]+"</li>";
+            contentStr += '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+            '<h4>'+all[i][0]+'</h4><hr><h2>'+all[i][1]+"<br></br>"+all[i][2]+
+            '</h2><br><div class="sebu" align="center">'+
+            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[i][0]+"&latitude="+all[i][3]+"&longitude="+all[i][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+            '<button type="button" id="like">좋아요</button>'+
+            '<button type="button" id="star">즐겨찾기</button></li></div>';
         } 
         $("#output").html(contentStr); //다시 정렬한거에 맞게 표시
     }
     else
     {
-        contentStr = '<li class="list-group-item">[이름]'+all[0][0]+'<br></br>[카테고리]'+all[0][6] + "<br></br>[주소]"+all[0][1]+"<br></br>[연락처]"+all[0][2]+"</li>";
+        contentStr = '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+        '<h4>'+all[0][0]+'</h4><hr><h2>'+all[0][1]+"<br></br>"+all[0][2]+
+        '</h2><br><div class="sebu" align="center">'+
+        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[0][0]+"&latitude="+all[0][3]+"&longitude="+all[0][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+        '<button type="button" id="like">좋아요</button>'+
+        '<button type="button" id="star">즐겨찾기</button></li></div>';
     
         for(var i=1; i<all.length; i++)
         {
-            contentStr += '<li class="list-group-item">[이름]'+all[i][0]+'<br></br>[카테고리]'+all[i][6]  + "<br></br>[주소]"+all[i][1]+"<br></br>[연락처]"+all[i][2]+"</li>";
+            contentStr += '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+            '<h4>'+all[i][0]+'</h4><hr><h2>'+all[i][1]+"<br></br>"+all[i][2]+
+            '</h2><br><div class="sebu" align="center">'+
+            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[i][0]+"&latitude="+all[i][3]+"&longitude="+all[i][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+            '<button type="button" id="like">좋아요</button>'+
+            '<button type="button" id="star">즐겨찾기</button></li></div>';
         } 
         $("#output").html(contentStr); //다시 정렬한거에 맞게 표시
     }
@@ -215,11 +237,21 @@ function sorting_name2()
         return left[0].toUpperCase().localeCompare(right[0].toUpperCase());
     })
 
-    contentStr = '<li class="list-group-item">[이름]'+all2[0][0]+'<br></br>[카테고리]'+all2[0][6] + "<br></br>[주소]"+all2[0][1]+"<br></br>[연락처]"+all2[0][2]+"</li>";
-    
+    contentStr = '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+    '<h4>'+all2[0][0]+'</h4><hr><h2>'+all2[0][1]+"<br></br>"+all2[0][2]+
+    '</h2><br><div class="sebu" align="center">'+
+    '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all2[0][0]+"&latitude="+all2[0][3]+"&longitude="+all2[0][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+    '<button type="button" id="like">좋아요</button>'+
+    '<button type="button" id="star">즐겨찾기</button></li></div>';
+
     for(var i=1; i<all2.length; i++)
     {
-        contentStr += '<li class="list-group-item">[이름]'+all2[i][0]+'<br></br>[카테고리]'+all2[i][6] + "<br></br>[주소]"+all2[i][1]+"<br></br>[연락처]"+all2[i][2]+"</li>";
+        contentStr += '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+        '<h4>'+all2[i][0]+'</h4><hr><h2>'+all2[i][1]+"<br></br>"+all2[i][2]+
+        '</h2><br><div class="sebu" align="center">'+
+        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all2[i][0]+"&latitude="+all2[i][3]+"&longitude="+all2[i][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+        '<button type="button" id="like">좋아요</button>'+
+        '<button type="button" id="star">즐겨찾기</button></li></div>';
     } 
     $("#output2").html(contentStr);
 }
@@ -239,19 +271,42 @@ function sorting_dis()
 
     if(all[0][2] == "체육도장업" || all[0][2] == "유통관련업")
     {
-        contentStr = '<li class="list-group-item">[이름]'+all[0][0]+'<br></br>[카테고리]'+all[0][6] + "<br></br>[주소]"+all[0][1]+"<br></br>[기타]"+all[0][2]+"</li>";
+        //체육도장업 손보기
+        contentStr = '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+        '<h4>'+all[0][0]+'</h4><hr><h2>'+all[0][1]+"<br></br>"+all[0][2]+
+        '</h2><br><div class="sebu" align="center">'+
+        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[0][0]+"&latitude="+all[0][3]+"&longitude="+all[0][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+        '<button type="button" id="like">좋아요</button>'+
+        '<button type="button" id="star">즐겨찾기</button></li></div>';
+        
         for(var i=1; i<all.length; i++)
         {
-            contentStr += '<li class="list-group-item">[이름]'+all[i][0]+'<br></br>[카테고리]'+all[i][6] + "<br></br>[주소]"+all[i][1]+"<br></br>[기타]"+all[i][2]+"</li>";
+            contentStr += '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+            '<h4>'+all[i][0]+'</h4><hr><h2>'+all[i][1]+"<br></br>"+all[i][2]+
+            '</h2><br><div class="sebu" align="center">'+
+            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[i][0]+"&latitude="+all[i][3]+"&longitude="+all[i][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+            '<button type="button" id="like">좋아요</button>'+
+            '<button type="button" id="star">즐겨찾기</button></li></div>';
         }
         $("#output").html(contentStr);
     }
     else
     {
-        contentStr = '<li class="list-group-item">[이름]'+all[0][0]+'<br></br>[카테고리]'+all[0][6] + "<br></br>[주소]"+all[0][1]+"<br></br>[연락처]"+all[0][2]+"</li>";
+        contentStr = '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+        '<h4>'+all[0][0]+'</h4><hr><h2>'+all[0][1]+"<br></br>"+all[0][2]+
+        '</h2><br><div class="sebu" align="center">'+
+        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[0][0]+"&latitude="+all[0][3]+"&longitude="+all[0][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+        '<button type="button" id="like">좋아요</button>'+
+        '<button type="button" id="star">즐겨찾기</button></li></div>';
+        
         for(var i=1; i<all.length; i++)
         {
-            contentStr += '<li class="list-group-item">[이름]'+all[i][0]+'<br></br>[카테고리]'+all[i][6] + "<br></br>[주소]"+all[i][1]+"<br></br>[연락처]"+all[i][2]+"</li>";
+            contentStr += '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+            '<h4>'+all[i][0]+'</h4><hr><h2>'+all[i][1]+"<br></br>"+all[i][2]+
+            '</h2><br><div class="sebu" align="center">'+
+            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all[i][0]+"&latitude="+all[i][3]+"&longitude="+all[i][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+            '<button type="button" id="like">좋아요</button>'+
+            '<button type="button" id="star">즐겨찾기</button></li></div>';
         } 
         $("#output").html(contentStr);
     }
@@ -271,10 +326,22 @@ function sorting_dis2()
 
     console.log(all2);
 
-    contentStr = '<li class="list-group-item">[이름]'+all2[0][0]+'<br></br>[카테고리]'+all2[0][6]+"<br></br>[주소]"+all2[0][1]+"<br></br>[연락처]"+all2[0][2]+"</li>";
+
+    contentStr = '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+    '<h4>'+all2[0][0]+'</h4><hr><h2>'+all2[0][1]+"<br></br>"+all2[0][2]+
+    '</h2><br><div class="sebu" align="center">'+
+    '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all2[0][0]+"&latitude="+all2[0][3]+"&longitude="+all2[0][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+    '<button type="button" id="like">좋아요</button>'+
+    '<button type="button" id="star">즐겨찾기</button></li></div>';
+
     for(var i=1; i<all2.length; i++)
     {
-        contentStr += '<li class="list-group-item">[이름]'+all2[i][0]+'<br></br>[카테고리]'+all2[i][6]+"<br></br>[주소]"+all2[i][1]+"<br></br>[연락처]"+all2[i][2]+"</li>";
+        contentStr += '<li class="list-group-item style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+        '<h4>'+all2[i][0]+'</h4><hr><h2>'+all2[i][1]+"<br></br>"+all2[i][2]+
+        '</h2><br><div class="sebu" align="center">'+
+        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+all2[i][0]+"&latitude="+all2[i][3]+"&longitude="+all2[i][4]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+        '<button type="button" id="like">좋아요</button>'+
+        '<button type="button" id="star">즐겨찾기</button></li></div>';
     } 
     $("#output2").html(contentStr);
     
@@ -303,7 +370,17 @@ function placeRecommend(city)
             '<h5> Movie Theaters </h5></a></button>');
         var subcategory = document.getElementById("sub");
         subcategory.innerHTML = "<span>교양 1. Concert Hall ...</span>";
-
+        /*
+        $.ajax({
+            type:"GET",
+            url:"http://45.32.36.198/place?city=안성시&category=교양",
+            success:function(data)
+            {
+                var text = JSON.parse(data);
+                console.log(text);
+            }
+        })
+        */
         $.ajax({//공연장
             type: "GET",
             url: "https://openapi.gg.go.kr/PerformPlace?KEY=f6cc1704c2f24255b5cf45d4949f1f84&Type=json&pIndex=1&pSize=1000",
@@ -341,7 +418,12 @@ function placeRecommend(city)
                         window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
 
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>";
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
                         var abj =
                         {
                             y: latitude[i],
@@ -349,7 +431,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[교양] 공연장",
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -399,7 +482,13 @@ function placeRecommend(city)
                         window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                         window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                         
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                         var abj =
                         {
                             y: latitude2[i],
@@ -407,7 +496,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[교양] 영화관",
                             name: placename2[i],
-                            etc: phone2[i]
+                            etc: phone2[i],
+                            address: address2[i]
                         };
 
                         addSymbol(abj);
@@ -467,7 +557,14 @@ function placeRecommend(city)
                         window.y[i] = 10000;
                         window.distance[i] = 10000; //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
-                        contentStr += '<li class="list-group-item">[이름] '+list[i].FACLT_NM+'<br></br>[카테고리]'+window.category[i]+"<br></br>[시설] "+list[i].ETC_FACLT_NM+"<br></br>[가능한 종목] "+list[i].GYM_POSBL_ITEM_CONT+"</li>";
+                        
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+list[i].FACLT_NM+'</h4><hr><h2>'+list[i].ETC_FACLT_NM+" :: "+list[i].GYM_POSBL_ITEM_CONT+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+                        
                         var abj =
                         {
                             y: latitude[i],
@@ -475,7 +572,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[레포츠] 체육관",
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -521,7 +619,13 @@ function placeRecommend(city)
                         window.y3[i] = 111 * Math.abs(latitude3[i] - user_latitude);
                         window.distance3[i] = Math.sqrt( (Math.pow(x3[i], 2)) + (Math.pow(y3[i],2)) ); //거리
                         window.all3[i] = [placename3[i], address3[i], phone3[i], latitude3[i], longitude3[i], distance3[i],category3[i]]; //배열로 저장
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename3[i]+'<br></br>[카테고리]'+window.category3[i]+"<br></br>[주소]"+window.address3[i]+"<br></br>[종목]"+list[i].PLVTINST_DIV_NM+" "+list[i].CULTUR_PHSTRN_INDUTYPE_NM+"</li>";
+                        
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename3[i]+'</h4><hr><h2>'+window.address3[i]+"<br></br>"+list[i].PLVTINST_DIV_NM+" "+window.phone3[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename3[i]+"&latitude="+latitude3[i]+"&longitude="+longitude3[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
                     
                         var abj =
                         {
@@ -530,7 +634,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[레포츠] 체육도장",
                             name: placename3[i],
-                            etc: phone3[i]
+                            etc: phone3[i],
+                            address: address3[i]
                         };
 
                         addSymbol(abj);
@@ -589,7 +694,13 @@ function placeRecommend(city)
                         window.distance4[i] = Math.sqrt( (Math.pow(x4[i], 2)) + (Math.pow(y4[i],2)) ); //거리
                         window.all4[i] = [placename4[i], address4[i], phone4[i], latitude4[i], longitude4[i], distance4[i], category4[i]]; //배열로 저장
                         
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename4[i]+'<br></br>[카테고리]'+window.category4[i]+"<br></br>[주소]"+window.address4[i]+"<br></br>[연락처]"+window.phone4[i]+"</li>";
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename4[i]+'</h4><hr><h2>'+window.address4[i]+"<br></br>"+window.phone4[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename4[i]+"&latitude="+latitude4[i]+"&longitude="+longitude4[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                         var abj =
                         {
                             y: latitude4[i],
@@ -597,7 +708,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[레포츠] 수영장",
                             name: placename4[i],
-                            etc: phone4[i]
+                            etc: phone4[i],
+                            address: address4[i]
                         };
 
                         addSymbol(abj);
@@ -660,7 +772,14 @@ function placeRecommend(city)
                         window.y2[i] = 111 * Math.abs(latitude2[i] - user_latitude);
                         window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                         window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i], category2[i]]; //배열로 저장
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                        
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+                       
                         var abj =
                         {
                             y: latitude2[i],
@@ -668,7 +787,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[레포츠] 낚시터",
                             name: placename2[i],
-                            etc: phone2[i]
+                            etc: phone2[i],
+                            address: address2[i]
                         };
 
                         addSymbol(abj);
@@ -731,7 +851,13 @@ function placeRecommend(city)
                         window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                         window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                         
-                        contentStr2 += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+                        
                         var abj =
                         {
                             y: latitude2[i],
@@ -739,7 +865,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[미술] 만화",
                             name: placename2[i],
-                            etc: phone2[i]
+                            etc: phone2[i],
+                            address: address2[i]
                         };
 
                         addSymbol(abj);
@@ -774,7 +901,13 @@ function placeRecommend(city)
                             window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                             window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                             
-                            contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude[i],
@@ -782,7 +915,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[미술] 미술",
                                 name: placename[i],
-                                etc: phone[i]
+                                etc: phone[i],
+                                address: address[i]
                             };
     
                             addSymbol(abj);
@@ -852,7 +986,13 @@ function placeRecommend(city)
                         window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                           
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                         var abj =
                         {
                             y: latitude[i],
@@ -860,7 +1000,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[공예] 컴퓨터",
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -894,7 +1035,13 @@ function placeRecommend(city)
                             window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                             window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                             
-                            contentStr2 += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude2[i],
@@ -902,7 +1049,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[공예] "+category2[i],
                                 name: placename2[i],
-                                etc: phone2[i]
+                                etc: phone2[i],
+                                address: address2[i]
                             };
     
                             addSymbol(abj);
@@ -971,7 +1119,13 @@ function placeRecommend(city)
                         window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                           
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                         var abj =
                         {
                             y: latitude[i],
@@ -979,7 +1133,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[어학] "+category[i],
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -1013,7 +1168,13 @@ function placeRecommend(city)
                             window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                             window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                             
-                            contentStr2 += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude2[i],
@@ -1021,7 +1182,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[어학] "+category2[i],
                                 name: placename2[i],
-                                etc: phone2[i]
+                                etc: phone2[i],
+                                address: address2[i]
                             };
     
                             addSymbol(abj);
@@ -1089,7 +1251,13 @@ function placeRecommend(city)
                         window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                           
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+ 
                         var abj =
                         {
                             y: latitude[i],
@@ -1097,7 +1265,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[무용] 현대무용",
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -1148,7 +1317,13 @@ function placeRecommend(city)
                             window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                             window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                             
-                            contentStr += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude2[i],
@@ -1156,7 +1331,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[무용] 현대무용 / 연기",
                                 name: placename2[i],
-                                etc: phone2[i]
+                                etc: phone2[i],
+                                address: address2[i]
                             };
     
                             addSymbol(abj);
@@ -1222,7 +1398,13 @@ function placeRecommend(city)
                         window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                           
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                         var abj =
                         {
                             y: latitude[i],
@@ -1230,7 +1412,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[요리] 요리",
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -1264,7 +1447,13 @@ function placeRecommend(city)
                             window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                             window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                             
-                            contentStr2 += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+                            
                             var abj =
                             {
                                 y: latitude2[i],
@@ -1272,7 +1461,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[요리] 바리스타",
                                 name: placename2[i],
-                                etc: phone2[i]
+                                etc: phone2[i],
+                                address: address2[i]
                             };
     
                             addSymbol(abj);
@@ -1342,7 +1532,13 @@ function placeRecommend(city)
                         window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                         window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                           
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+                        
                         var abj =
                         {
                             y: latitude[i],
@@ -1350,7 +1546,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[음악] 보컬",
                             name: placename[i],
-                            etc: phone[i]
+                            etc: phone[i],
+                            address: address[i]
                         };
 
                         addSymbol(abj);
@@ -1384,7 +1581,13 @@ function placeRecommend(city)
                             window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                             window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                             
-                            contentStr2 += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude2[i],
@@ -1392,7 +1595,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[음악] 악기",
                                 name: placename2[i],
-                                etc: phone2[i]
+                                etc: phone2[i],
+                                address: address2[i]
                             };
     
                             addSymbol(abj);
@@ -1444,7 +1648,13 @@ function placeRecommend(city)
                         window.distance3[i] = Math.sqrt( (Math.pow(x3[i], 2)) + (Math.pow(y3[i],2)) ); //거리
                         window.all3[i] = [placename3[i], address3[i], phone3[i], latitude3[i], longitude3[i], distance3[i], category3[i]]; //배열로 저장
                         
-                        contentStr += '<li class="list-group-item">[이름]'+window.placename3[i]+'<br></br>[카테고리]'+window.category3[i]+"<br></br>[주소]"+window.address3[i]+"<br></br>[기타]"+window.phone3[i]+"</li>";
+                        contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                        '<h4>'+window.placename3[i]+'</h4><hr><h2>'+window.address3[i]+"<br></br>"+window.phone3[i]+
+                        '</h2><br><div class="sebu" align="center">'+
+                        '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename3[i]+"&latitude="+latitude3[i]+"&longitude="+longitude3[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                        '<button type="button" id="like">좋아요</button>'+
+                        '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                         var abj =
                         {
                             y: latitude3[i],
@@ -1452,7 +1662,8 @@ function placeRecommend(city)
                             img: "/images/marker.png",
                             category: "[음악] 노래방",
                             name: placename3[i],
-                            etc: phone3[i]
+                            etc: phone3[i],
+                            address: address3[i]
                         };
 
                         addSymbol(abj);
@@ -1528,7 +1739,13 @@ function placeRecommend(city)
                             window.distance[i] = Math.sqrt( (Math.pow(x[i], 2)) + (Math.pow(y[i],2)) ); //거리
                             window.all[i] = [placename[i], address[i], phone[i], latitude[i], longitude[i], distance[i],category[i]]; //배열로 저장
                             
-                            contentStr += '<li class="list-group-item">[이름]'+window.placename[i]+'<br></br>[카테고리]'+window.category[i]+"<br></br>[주소]"+window.address[i]+"<br></br>[연락처]"+window.phone[i]+"</li>"; 
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename[i]+'</h4><hr><h2>'+window.address[i]+"<br></br>"+window.phone[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename[i]+"&latitude="+latitude[i]+"&longitude="+longitude[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude[i],
@@ -1536,7 +1753,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[패션] 미용",
                                 name: placename[i],
-                                etc: phone[i]
+                                etc: phone[i],
+                                address: address[i]
                             };
     
                             addSymbol(abj);
@@ -1570,8 +1788,13 @@ function placeRecommend(city)
                             window.distance2[i] = Math.sqrt( (Math.pow(x2[i], 2)) + (Math.pow(y2[i],2)) ); //거리
                             window.all2[i] = [placename2[i], address2[i], phone2[i], latitude2[i], longitude2[i], distance2[i],category2[i]]; //배열로 저장
                             
-                            contentStr2 += '<li class="list-group-item">[이름]'+window.placename2[i]+'<br></br>[카테고리]'+window.category2[i]+"<br></br>[주소]"+window.address2[i]+"<br></br>[연락처]"+window.phone2[i]+"</li>";
-                        
+                            contentStr += '<li class="list-group-item" style="margin-top:50px; margin-bottom:50px; border-color:white; border-radius: 40px 80px;">'+
+                            '<h4>'+window.placename2[i]+'</h4><hr><h2>'+window.address2[i]+"<br></br>"+window.phone2[i]+
+                            '</h2><br><div class="sebu" align="center">'+
+                            '<button type="button" id="detail" onclick="location.href='+"'/placedetail?name="+placename2[i]+"&latitude="+latitude2[i]+"&longitude="+longitude2[i]+"&category="+result.hobby_type+"'"+'">자세히보기</button>'+
+                            '<button type="button" id="like">좋아요</button>'+
+                            '<button type="button" id="star">즐겨찾기</button></li></div>';
+
                             var abj =
                             {
                                 y: latitude2[i],
@@ -1579,7 +1802,8 @@ function placeRecommend(city)
                                 img: "/images/marker.png",
                                 category: "[패션] 네일(뷰티)",
                                 name: placename2[i],
-                                etc: phone2[i]
+                                etc: phone2[i],
+                                address: address2[i]
                             };
 
                         addSymbol(abj);
@@ -1608,36 +1832,12 @@ function addSymbol(obj)
         map: map
     });
 
-    /* 위도 경도로 주소 알아내기 */
-    var address = "";
-    var geocoder = new google.maps.Geocoder;
-    var latlng = {lat: parseFloat(obj.y), lng: parseFloat(obj.x)};
-    geocoder.geocode({'location': latlng}, function(results, status)
-    {
-        if(status == 'OK')
-        {
-            if(results[0])
-            {
-                address = results[0].formatted_address; //전체주소
-                if(results[0] == " ")
-                {
-                    address = "주소 정보를 찾지 못했습니다";
-                }
-            }
-        else
-        {
-            console("지오코딩 에러");
-        }
-    }
-    });
-
     /* 마커 이벤트 리스너 */
     google.maps.event.addListener(marker, 'click', (function(marker) {
         return function() {
             
-            content = '<div id="MarkerText"><h4>'+obj.name+'</h4><p>카테고리: '+
-            obj.category+'<br>주소: '+address+'<br>기타 정보: '+obj.etc+
-            '</p><a target="_blank" href=" /placedetail?name='+obj.name+'&latitude='+obj.y+'&longitude='+obj.x+'"><p>자세한 정보 확인하기</p></a></div>';
+            content = '<div id="MarkerText"><h4><a style="color: rgb(8, 0, 100);" target="_blank" href=" /placedetail?name='+obj.name+'&latitude='+obj.y+'&longitude='+obj.x+'">'+obj.name+'</a></h4><p>카테고리: '+
+            obj.category+'<br>주소: '+obj.address+'<br>기타 정보: '+obj.etc+'</div>';
             //html로 표시될 인포 윈도우의 내용
             infoWindow.setContent(content);
             

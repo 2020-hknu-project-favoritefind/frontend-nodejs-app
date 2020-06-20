@@ -9,8 +9,9 @@ var latitude = result.latitude; //위도
 var longitude = result.longitude; //경도
 var map; //지도
 var service; //세부 사항 서비스
+var userCity; //사용자 지역
 
-window.onload = search;
+window.onload = geocodeLatLng;
 
 /* 함수 */
 //1. url 파라미터 > 스크립트로 가져오기
@@ -24,8 +25,32 @@ function get_query(){
     return result;
 }
 
+//2. 사용자 위도, 경도로 지역 알아오기
+function geocodeLatLng(map)
+{
+    var geocoder = new google.maps.Geocoder;
+    var latlng = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
+    geocoder.geocode({'location': latlng}, function(results, status)
+    {
+        if(status == 'OK')
+        {
+            if(results[0])
+            {
+                city = results[0];
+                city = results[0].formatted_address.split(' ')[2]; //전체주소에서 도시 뽑기
+                userCity = city;
+                search(userCity);
+            }
+        else
+        {
+            window.alert('No results found');
+        }
+    }
+    });
+}
+
 //2. 장소 검색 - place id 받아오기
-function search()
+function search(user_city)
 {
     service = new google.maps.places.PlacesService(document.getElementById('search'));
     
@@ -46,13 +71,14 @@ function search()
             {
                 var place = results[i];
                 console.log(i+'번째 함수 호출하겠음');
-                getPlaceDetail(place, i);
+                getPlaceDetail(place, i, user_city);
                 $("#search_detail").append('</div>');
             }
         }
         else if(google.maps.places.PlacesServiceStatus.ZERO_RESULTS)
         {
-            $("#search").html("<h5>검색 결과가 없습니다.</h5><br><br><p>다음 포털 사이트에서 검색하기</p>"+
+            $("#search").html("<h5>검색 결과가 없습니다.</h5>"+//세부 정보 DB와 연결 안되서 UI로 임의 정보 넣을거면 여기에 넣으면 됨
+            "<br><br><p>다음 포털 사이트에서 검색하기</p>"+
             '<a href="https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query='+name+'"><img src="/images/naver.png" width="50" height="50" style="padding: 0.5rem; alt="네이버로 장소 검색하기"></img></a>'+
             '<a href="https://www.google.com/search?q='+name+'&oq='+name+'&aqs=chrome..69i57j0l4j69i60l2j69i61.3055j0j7&sourceid=chrome&ie=UTF-8"><img src="/images/google.png" width="50" height="50" style="padding: 0.5rem; alt="구글로 장소 검색하기"></img></a>');
         }
@@ -64,7 +90,7 @@ function search()
 }
 
 // 장소 ID로 상세 정보 받기
-function getPlaceDetail(searchPlace, num)
+function getPlaceDetail(searchPlace, num, city)
 {
     console.log(num+'번째 detail 함수 들어옴!');
     
@@ -86,9 +112,7 @@ function getPlaceDetail(searchPlace, num)
         {
             /* 내부 변수 */
             var photo = place.photos[0];
-
             var photourl=photo.getUrl({"maxWidth": 400, "maxHeight": 400});
-            
             var open = ""; //오픈 여부 직관적으로
             if(place.opening_hours == null)
             {
@@ -102,7 +126,6 @@ function getPlaceDetail(searchPlace, num)
             {
                 open = "CLOSE";
             }
-
             var price = "";
             if(place.price_level == 0)
             {
@@ -124,7 +147,6 @@ function getPlaceDetail(searchPlace, num)
             {
                 price = "매우 고가";
             }
-
             var review = place.reviews[0];
             var rating = 0.0;
             var ratingText = "";
@@ -139,32 +161,33 @@ function getPlaceDetail(searchPlace, num)
                 ratingText = review.text;
             }
 
-            //1. 첫번째로 간단히 카드 레이아웃 보여주기
-            $("#search_detail").append('<div class="card'+num+'">'+'<div class="card-all">'+'<div class="card-header" style="background-image: url('+"'"+photourl+"')"+'">'+'<div class="card-header-is_closed">'+open+'</div>'+
-            '<div class="card-header-star"><a href=""><i class="fa fa-star" aria-hidden="true"></i></a>'+'</div></div>'+ //a에 즐겨찾기 버튼 추가하게 추가하기
-            //card-header
-            '<div class="card-body">'+
-            '<div class="card-body-header">'+
-            '<h1>'+place.name+'</h1>'+
-            //'<img src="'+photourl+'"></img>'+
-            '<p class="card-body-first">'+
-            place.formatted_address+'<br>'+
-            place.formatted_phone_number+'<br>'+
-            '<a href="'+place.website+'">'+place.website+'</a></p>'+
-            '</div>'+ //card-body-header (first)
+            if(place.formatted_address.split(' ')[2] == city)
+            {
+                //1. 첫번째로 간단히 카드 레이아웃 보여주기
+                $("#search_detail").append('<div class="card'+num+'">'+'<div class="card-all">'+'<div class="card-header" style="background-image: url('+"'"+photourl+"')"+'">'+'<div class="card-header-is_closed">'+open+'</div>'+
+                '<div class="card-header-star"><a href=""><i class="fa fa-star" aria-hidden="true" style="color:yellow; font-size:35px;"></i></a>'+'</div></div>'+ //a에 즐겨찾기 버튼 추가하게 추가하기
+                //card-header
+                '<div class="card-body">'+
+                '<div class="card-body-header">'+
+                '<h1>'+place.name+'</h1>'+
+                //'<img src="'+photourl+'"></img>'+
+                '<p class="card-body-first">'+
+                place.formatted_address+'<br>'+
+                place.formatted_phone_number+'<br>'+
+                '<a href="'+place.website+'">'+place.website+'</a></p>'+
+                '</div>'+ //card-body-header (first)
 
-            //2. 두번째로 자세한 카드 레이아웃 보여주기
-            '<p class="card-body-description">'+
-            //place.opening_hours.weekday_text+'<br>'+
-            '평점: '+rating+'<br>'+
-            '리뷰: '+ratingText+'<br>'+
-            '가격: '+price+'<br>'+
-            '<a href="'+place.url+'"> 더 자세한 정보 </a>'+
-            '</p>'+ //card-body (second)
-            '</div></div>' //card-body, card-all, card-i
-            );
-            
-            console.log(num+'번째 레이아웃 잘 들어감?');
+                //2. 두번째로 자세한 카드 레이아웃 보여주기
+                '<p class="card-body-description">'+
+                //place.opening_hours.weekday_text+'<br>'+
+                '평점: '+rating+'<br>'+
+                '리뷰: '+ratingText+'<br>'+
+                '가격: '+price+'<br>'+
+                '<a href="'+place.url+'"> 더 자세한 정보 </a>'+
+                '</p>'+ //card-body (second)
+                '</div></div>' //card-body, card-all, card-i
+                );
+            }
         }
         else if(status == google.maps.places.PlacesServiceStatus.INVALID_REQUEST)
         {
@@ -176,12 +199,16 @@ function getPlaceDetail(searchPlace, num)
         }
         else if(google.maps.places.PlacesServiceStatus.ZERO_RESULTS)
         {
-            console.log("DB에 있는 내용이 표시되도록 재구현할 예정");
+            //DB 이름으로 장소 조회하는 게 구현이 안되어있음
+                    
+            $("#search").html("<h5>검색 결과가 없습니다.</h5><br><br><p>다음 포털 사이트에서 검색하기</p>"+
+            '<a href="https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query='+name+'"><img src="/images/naver.png" width="50" height="50" style="padding: 0.5rem; alt="네이버로 장소 검색하기"></img></a>'+
+            '<a href="https://www.google.com/search?q='+name+'&oq='+name+'&aqs=chrome..69i57j0l4j69i60l2j69i61.3055j0j7&sourceid=chrome&ie=UTF-8"><img src="/images/google.png" width="50" height="50" style="padding: 0.5rem; alt="구글로 장소 검색하기"></img></a>');
+        
         }
     });
     
 }
-
             /*Google Library 결과 
                 //아이디 - 세부 정보 요청에 사용 : place_id
                 영업 중 - opening_hours.open_now //true면 운영중, false면 중단
