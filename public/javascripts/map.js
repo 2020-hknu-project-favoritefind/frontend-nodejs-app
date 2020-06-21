@@ -1291,7 +1291,7 @@ function placeRecommend(city)
                     //배열로 저장
                     for(var i=0; i<list.length; i++)
                     {
-                        if( ( (list[i].CRSE_CLASS_NM != null) && ((list[i].CRSE_CLASS_NM.indexOf("연극") != -1 || (list[i].FACLT_NM.indexOf("댄스") != -1))) )) //&& (city == list[i].SIGUN_NM) )
+                        if( ( (list[i].CRSE_CLASS_NM != null) && ((list[i].CRSE_CLASS_NM.indexOf("연극") != -1 || (list[i].FACLT_NM.indexOf("댄스") != -1))) && (city == list[i].SIGUN_NM)))
                         {
                             if (list[i].FACLT_NM == null)
                             {
